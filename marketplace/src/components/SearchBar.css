@@ -1,0 +1,38 @@
+.search-bar {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+    align-items: center;
+  }
+  .search {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #eaeaea;
+  }
+  .search input {
+    border: 0;
+    outline: none;
+    flex: 1;
+    font-size: 16px;
+  }
+  .search-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  select{
+    border: 0;
+    background: transparent;
+        
+  }
+
+  .city-input{
+    width: 120;
+    border: 0;
+    outline: none;
+  }
