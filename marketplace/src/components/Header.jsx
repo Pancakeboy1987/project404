@@ -9,7 +9,7 @@ export default function Header() {
         <div>
           <div className='main-title'>RUDN Market</div>
           <div  className="alter-title">
-            Классические объявления
+            лалаллалала
           </div>
         </div>
       </div>
