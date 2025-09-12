@@ -1,0 +1,51 @@
+.main-title{
+    font-weight: 700;
+}
+
+.alter-title{
+    font-size: 12px;
+    color:black
+
+}
+
+.btn{
+    background-color: rgb(67, 155, 255);
+    color: azure;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+  }
+
+
+
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+
+  .logo .mark {
+    width: 42px;
+    height: 42px;
+    background: rgb(67, 155, 255);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+  }
+
+
+ 
+  .nav-btns {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
