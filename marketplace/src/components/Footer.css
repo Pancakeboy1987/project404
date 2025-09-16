@@ -1,0 +1,10 @@
+.footer-block{
+    display: flex;
+    justify-content: center;
+
+}
+
+.footer-block-text{
+    display: flex;
+    gap: 5px;
+}
