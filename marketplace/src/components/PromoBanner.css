@@ -1,0 +1,25 @@
+
+.promo {
+    background: linear-gradient(
+      90deg,rgba(243, 115, 23, 0.12),rgba(255, 107, 0, 0.06));
+    padding: 18px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .main-text{
+    font-weight: 700;
+  }
+
+  .other-text{
+    color: gray;
+  }
+  .btn{
+    background-color: rgb(67, 155, 255);
+    color: azure;
+    border: 0px solid #e6e6e6;
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
