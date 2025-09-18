@@ -1,8 +1,10 @@
 import Modal from "./Modal"
 import { useState } from "react"
 import "./Login.css"
+import Registration from "./Registration"
 
 export default function({onClose}){
+    const [authIsOpen,setAuthIsOpen]=useState(false)
     return(
         <Modal onClose={onClose}>
         <h2>Вход</h2>
@@ -13,7 +15,10 @@ export default function({onClose}){
         </form>
         <div className="to-sign-in">
             <h3>Зарегистрироваться?</h3>
-            <button className="to-sign-in-button" type="text">Зарегистрироваться</button>
+            <button className="to-sign-in-button" onClick={()=>setAuthIsOpen(true)} type="text">Зарегистрироваться</button>
+            {authIsOpen&&(
+                <Registration onClose={() => setAuthIsOpen(false)}/>
+            )}
         </div>
       </Modal>
     )
