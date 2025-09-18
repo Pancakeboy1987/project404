@@ -1,4 +1,6 @@
 import Modal from "./Modal"
+import { useState } from "react"
+import "./Login.css"
 
 export default function({onClose}){
     return(
@@ -9,6 +11,10 @@ export default function({onClose}){
           <input className="login-input" type="password" placeholder="Пароль" />
           <button className="login-button" type="submit">Войти</button>
         </form>
+        <div className="to-sign-in">
+            <h3>Зарегистрироваться?</h3>
+            <button className="to-sign-in-button" type="text">Зарегистрироваться</button>
+        </div>
       </Modal>
     )
 
