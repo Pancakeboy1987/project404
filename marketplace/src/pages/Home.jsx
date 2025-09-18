@@ -9,8 +9,6 @@ import {goods} from "../components/Goods";
 
 
 
-
-
 export default function Home() {
   return (
     <div className="site">

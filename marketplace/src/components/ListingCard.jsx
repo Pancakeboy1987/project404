@@ -1,5 +1,6 @@
 import React from "react";
 import './ListingCard.css'
+import {Link} from "react-router-dom"
 
 export default function ListingCard({ item }) {
   return (
@@ -18,7 +19,7 @@ export default function ListingCard({ item }) {
       </div>
       <div className="card-footer">
         <div>2 часа назад</div>
-        <div><b>Подробнее →</b></div>
+        {/*{<Link to={"../pages/ProductOne.jsx"}><b>Подробнее →</b></Link>}*/}
       </div>
     </div>
   );
