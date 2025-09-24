@@ -6,6 +6,7 @@ import PromoBanner from "../components/PromoBanner";
 import ListingCard from "../components/ListingCard";
 import Footer from "../components/Footer";
 import {goods} from "../components/Goods";
+import { Link } from "react-router-dom";
 
 
 

@@ -15,16 +15,9 @@
   }
 
 
-.btn{
-    background-color: rgb(67, 155, 255);
-    color: azure;
-    border: 0px solid #e6e6e6;
-    padding: 8px 12px;
-    border-radius: 8px;
-      
-}
+
 .btn:hover{
-    filter: drop-shadow(0 0 1em #646effaa);
+  filter: drop-shadow(0 0 2em #2ec5ef6b);
   }
 
 

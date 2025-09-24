@@ -5,6 +5,7 @@
     border: 1px solid #eee;
     display: flex;
     flex-direction: column;
+    box-shadow: 1px 1px rgba(102, 205, 243, 0.188);
   }
   .card img {
     width: 100%;

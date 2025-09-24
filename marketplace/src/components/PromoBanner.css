@@ -1,7 +1,7 @@
 
 .promo {
     background: linear-gradient(
-      90deg,rgba(243, 115, 23, 0.12),rgba(255, 107, 0, 0.06));
+      90deg,rgba(252, 105, 0, 0.12),rgba(205, 93, 12, 0.253));
     padding: 18px;
     border-radius: 10px;
     display: flex;
@@ -17,7 +17,7 @@
     color: gray;
   }
   .btn{
-    background-color: rgb(67, 155, 255);
+    background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
     color: azure;
     border: 0px solid #e6e6e6;
     padding: 8px 12px;

@@ -20,6 +20,7 @@ export default function ListingCard({ item }) {
       <div className="card-footer">
         <div>2 часа назад</div>
         {/*{<Link to={"../pages/ProductOne.jsx"}><b>Подробнее →</b></Link>}*/}
+        <Link to={`/pages/${item.id}`} target="_blank">Узнать больше...</Link>
       </div>
     </div>
   );
