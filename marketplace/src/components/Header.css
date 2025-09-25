@@ -18,6 +18,7 @@
 
 .btn:hover{
   filter: drop-shadow(0 0 2em #2ec5ef6b);
+  transform: scale(1.02);
   }
 
 
@@ -26,7 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 0;
+    padding: 10px 0;
   }
 
 
@@ -42,12 +43,23 @@
   .logo .mark {
     width: 42px;
     height: 42px;
-    background: rgb(67, 155, 255);
+    background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     font-weight: 700;
+    text-decoration: none; 
+    color: inherit; 
+  
   }
 
+  .mark :visited{
+
+  }
+
+.mark-url{
+  color: #fff;
+  text-decoration: none;
+}

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { useState } from "react";
 import './Header.css'
 import Login from "./Login";
+import { Link } from "react-router-dom";
 
 import Modal from "./Modal";
 
@@ -11,7 +12,11 @@ export default function Header() {
   return (
     <header className="topbar">
       <div className="logo">
-        <div className="mark">R/M</div>
+        <div className="mark">
+        <Link className="mark-url" to={`/`}>
+        R/M
+        </Link>
+          </div>
         <div>
           <div className='main-title'>RUDN Market</div>
           <div  className="alter-title">

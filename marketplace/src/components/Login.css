@@ -6,7 +6,7 @@
    
   .login-input{
     border-radius: 25px;
-    border: 2px solid rgb(67, 155, 255);
+    border: 1px solid rgba(121, 180, 247, 0.684);
     padding:5px;
   
   }
@@ -16,7 +16,7 @@
     border-radius: 25px;
     padding:10px;
     margin-top:5px;
-    background-color: rgb(67, 155, 255);
+    background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
     color: #ffffff;
   }
 
@@ -33,6 +33,6 @@
     border-radius: 25px;
     padding:15px 55px 15px 55px;
     margin-top:5px;
-    background-color: rgb(67, 155, 255);
+    background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
     color:aliceblue
   }
