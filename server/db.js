@@ -1,3 +1,5 @@
 const {Sequilize} = require('sequilize')
 
-module.exports
+module.exports = new Sequilize(
+    process.env.DB_NAME,
+)
