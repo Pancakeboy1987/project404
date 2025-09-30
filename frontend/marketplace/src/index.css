@@ -1,8 +1,8 @@
 :root {
   --accent: #ff6b00;
   --muted: #6b6b6b;
-  --bg: #f6f7f9;
-  --card: #fff;
+  --bg: rgb(36,39,46);
+  --card: rgb(36,39,46);
 }
 
 * {
@@ -12,7 +12,7 @@
 body {
   font-family: Inter, Roboto, Arial, sans-serif;
   margin: 0;
-  background: whitesmoke;
+  background: rgb(236, 235, 235);
   color: #111;
 }
 
