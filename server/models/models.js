@@ -1,6 +1,7 @@
 const sequelize = require('../db')
 const {DataTypes} = require('sequelize')
 
+
 const User = sequelize.define('user',{
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},//здесь юник айди будет применятся для всех новых созданных объектов
     email:{type: DataTypes.STRING, primaryKey:true, },
@@ -8,7 +9,7 @@ const User = sequelize.define('user',{
     role:{type:DataTypes.STRING,defaultValue:"USER"}
 })
 
-const Product = sequelize.define('user',{
+const Product = sequelize.define('Product',{
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     title:{type: DataTypes.STRING, primaryKey:true, },
     price:{type: DataTypes.INTEGER},
