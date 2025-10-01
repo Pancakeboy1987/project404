@@ -20,8 +20,17 @@
 
 .right-block{
   display:flex;
+  padding: 15px;
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px #70d9f675;
+  border-radius: 15px;
+  width:500px;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
 
 }
+
 
 .product-image{
   padding: 10px;
@@ -62,22 +71,39 @@
     border: 1px solid #ddd;
     box-shadow: 1px 1px #70d9f675;
     border-radius: 15px;
-    width:500px;
+    width:400px;
     background-color: #fafafa;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin:0 auto;
+    height: 400px;
+    gap:180px
   }
   
   .contact-btn {
     background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
     color: azure;
     border: 0px solid #e6e6e6;
-    padding: 8px 12px;
+    padding: 18px 12px;
     border-radius: 15px;
     box-shadow: 1px 1px #70d9f6;
-    
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .write-btn{
+    background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
+    color: azure;
+    border: 0px solid #e6e6e6;
+    padding: 18px 12px;
+    border-radius: 15px;
+    box-shadow: 1px 1px #70d9f6;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .write-btn:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 2em #2ec5ef6b);
   }
 
   
@@ -87,3 +113,27 @@
     filter: drop-shadow(0 0 2em #2ec5ef6b);
   }
   
+
+  .btn-space{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+  }
+
+  .contact-info{
+    margin-top:20px ;
+    display:flex;
+    flex-direction: column;
+    gap:4px;
+    font-size: 18px;
+  }
+
+  .contact-info>h3{
+    margin:0;
+    text-shadow:1px 1px#30c2ea70;
+  
+  }
+
+  .contact-info>h4{
+    margin:0;
+  }

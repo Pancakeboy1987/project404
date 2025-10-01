@@ -42,9 +42,16 @@ export default function ProductPage() {
 
         <div className="right-block">
         <div className="seller-card">
-            <h3>Продавец</h3>
-            <p>Иван Иванов</p>
+          <div className="contact-info">
+          <h4>Продавец:</h4>
+          <h3>Иван Иванов</h3>
+          </div>
+          <div className="btn-space">
             <button className="contact-btn">Показать телефон</button>
+            <button className="write-btn">Написать</button>
+          </div>
+
+
             </div>
         </div>
 
