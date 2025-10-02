@@ -3,6 +3,8 @@ import {goods} from "../components/Goods";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import Categories from "../components/Categories";
+import { review } from "../components/review";
+import ReviewCard from "../components/ReviewCard";
 import "../components/ProductPage.css"
 
 export default function ProductPage() {
@@ -50,13 +52,16 @@ export default function ProductPage() {
             <button className="contact-btn">Показать телефон</button>
             <button className="write-btn">Написать</button>
           </div>
+          <div className="review-space">
+            {review.map((item) => (
+              <ReviewCard key={item.id} item={item}/>
+            )
+          )}
+          </div>
 
 
             </div>
         </div>
-
-
-
 
  
     </div>

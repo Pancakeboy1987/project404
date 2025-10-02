@@ -1,0 +1,16 @@
+.review-card{
+    display:flex;
+    border-radius: 15px;
+    border: 1px solid rgba(149, 145, 145, 0.58);
+    box-shadow: 1px 1px rgba(75, 199, 252, 0.385);
+    padding: 10px;
+    flex-direction: column;
+    gap: 3px;
+    
+}
+
+.review-name{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.302);
+    font-weight: 600;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
