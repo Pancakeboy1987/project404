@@ -5,6 +5,7 @@ const User = sequelize.define("user", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true }, //здесь юник айди будет применятся для всех новых созданных объектов
   email: { type: DataTypes.STRING, primaryKey: true },
   password: { type: DataTypes.STRING },
+  name: {type: DataTypes.STRING},
   role: { type: DataTypes.STRING, defaultValue: "USER" },
 });
 
@@ -17,4 +18,6 @@ const Product = sequelize.define("Product", {
   image: { type: DataTypes.STRING },
 });
 
+
+module.exports = User;
 //ниже опишу связи но для начала у нас только два объекта
