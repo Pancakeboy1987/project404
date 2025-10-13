@@ -1,5 +1,6 @@
 const {Sequelize} = require('sequelize')
 
+
 module.exports = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
@@ -11,3 +12,7 @@ module.exports = new Sequelize(
 
     }
 )
+
+const User = require('./models/models')
+
+

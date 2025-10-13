@@ -10,6 +10,8 @@ const cors = require('cors')
 
 const router = require('./routes/index')
 
+
+
 const PORT = process.env.PORT
 
 const app=express()
@@ -24,11 +26,14 @@ app.get('/',(req,res)=>{
 })
 
 
+
+
+
 const start = async ()=>{
     try{
         
         await sequelize.authenticate()//сверяется пароль и другие данные
-        await sequelize.sync()//синхронятся данные с бд на сервере
+        await sequelize.sync({ alter: true })//синхронятся данные с бд на сервере
         app.listen(PORT, ()=> console.log('it works'))
 
     }catch (e){
