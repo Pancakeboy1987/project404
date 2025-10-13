@@ -7,12 +7,17 @@ import ListingCard from "../components/ListingCard";
 import Footer from "../components/Footer";
 import {goods} from "../components/Goods";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../components/Contexts";
 
 
 
 export default function Home() {
+
+  const {theme, setTheme} = useContext(ThemeContext)
+
   return (
-    <div className="site">
+    <div className={`site-${theme}`}>
       <Header />
 
       <main>

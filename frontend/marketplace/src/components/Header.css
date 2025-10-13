@@ -14,10 +14,20 @@
     align-items: center;
   }
 
+.light-mode-btn{
+  border: 0;
+  font-size: 24px;
+  color: rgb(0, 179, 255);
+  background: 0;
+}
 
+.light-mode-btn:hover{
+  filter: drop-shadow(0 0 2em #2ec5ef6b);
+  transform: scale(1.15);
+}
 
 .btn:hover{
-  filter: drop-shadow(0 0 2em #2ec5ef6b);
+  filter: drop-shadow(0 0 5em #2ec5ef6b);
   transform: scale(1.02);
   }
 

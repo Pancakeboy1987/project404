@@ -1,19 +1,23 @@
-:root {
-  --accent: #ff6b00;
-  --muted: #6b6b6b;
-  --bg: rgb(36,39,46);
-  --card: rgb(36,39,46);
-}
+
 
 * {
   box-sizing: border-box;
 }
 
-body {
+body.light {
   font-family: Inter, Roboto, Arial, sans-serif;
   margin: 0;
+  padding: 0;
   background: rgb(236, 235, 235);
   color: #111;
+}
+
+body.dark{
+  font-family: Inter, Roboto, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: rgb(31,33,40);
+  color:aliceblue;
 }
 
 .site {

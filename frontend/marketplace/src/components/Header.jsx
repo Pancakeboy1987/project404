@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import { useState } from "react";
 import './Header.css'
+import { MdOutlineLightMode } from "react-icons/md"
 import Login from "./Login";
+import { ThemeContext } from "./Contexts";
+
 import { Link } from "react-router-dom";
 
 import Modal from "./Modal";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const {theme, setTheme} = useContext(ThemeContext)
+  
+
+
+
   return (
     <header className="topbar">
       <div className="logo">
@@ -26,6 +34,17 @@ export default function Header() {
       </div>
 
       <nav className="nav-btns">
+        <button className="light-mode-btn" onClick={()=>{
+          if (theme==='light'){
+            setTheme('dark')
+          }else{
+            setTheme('light')
+          }
+        }
+        }>
+
+          <MdOutlineLightMode />
+        </button>
         <button className="btn">Избранное</button>
         <button className="btn">Сообщения</button>
         <button className="btn" onClick={()=>setIsOpen(true)}>Войти</button>
