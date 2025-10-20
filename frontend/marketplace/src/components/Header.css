@@ -32,7 +32,23 @@
   }
 
 
-  
+.btn-light{
+  background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
+  color: azure;
+  border: 0px solid #e6e6e6;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.btn-dark{
+  background: linear-gradient(rgb(0, 179, 255), rgb(4, 95, 169));
+  color: azure;
+  border: 0px solid #e6e6e6;
+  padding: 8px 12px;
+  border-radius: 8px;
+
+}  
+
 .topbar {
     display: flex;
     align-items: center;

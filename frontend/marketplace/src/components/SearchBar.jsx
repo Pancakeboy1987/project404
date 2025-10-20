@@ -1,10 +1,14 @@
 import React from "react";
 import "./SearchBar.css"
+import { useContext } from "react";
+import { ThemeContext } from "./Contexts";
 
 export default function SearchBar() {
+  const {theme, setTheme} = useContext(ThemeContext)
+
   return (
-    <div className="search" role="search" >
-      <input placeholder="Чо ищете?" />
+    <div className={`search-${theme}`} role="search" >
+      <input className={`search-input-${theme}`} placeholder="Чо ищете?" />
       <select
         
       >

@@ -45,9 +45,9 @@ export default function Header() {
 
           <MdOutlineLightMode />
         </button>
-        <button className="btn">Избранное</button>
-        <button className="btn">Сообщения</button>
-        <button className="btn" onClick={()=>setIsOpen(true)}>Войти</button>
+        <button className={`btn-${theme}`}>Избранное</button>
+        <button className={`btn-${theme}`}>Сообщения</button>
+        <button className={`btn-${theme}`} onClick={()=>setIsOpen(true)}>Войти</button>
       </nav>
 
       {isOpen && (

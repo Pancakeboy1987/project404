@@ -12,6 +12,7 @@ import './App.css'
 
 function App() {
   const [theme, setTheme] = useState('light')
+  const [userAuth, setUserAuth] = useState('')
   
   useEffect(() => {
     document.body.classList.remove('light', 'dark');
@@ -22,12 +23,14 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{theme, setTheme}}>
+      <AuthContext.Provider value>
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pages/:id" element={<ProductPage />} />
         </Routes>
     </BrowserRouter>
+    </AuthContext.Provider>
   </ThemeContext.Provider>
 
 )

@@ -12,13 +12,18 @@
     background: rgb(31,33,40);
     border-radius: 10px;
     overflow: hidden;
-    border: 1px solid #eee;
+    border: 1px solid #696868;
     display: flex;
     flex-direction: column;
     box-shadow: 1px 1px rgba(102, 205, 243, 0.188);
     color: aliceblue;
   }
 
+
+  .card-light:hover{
+    filter: drop-shadow(0 0 2em #2ec5ef6b);
+    transform: scale(1.02);
+  }
 
 
   .card-dark:hover{

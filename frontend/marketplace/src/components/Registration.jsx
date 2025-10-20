@@ -42,7 +42,7 @@ export default function Registration({onClose}){
       // Устанавливаем успех (можно перенаправить на главную страницу)
       setSuccess(true);
       setError(null);
-      // Здесь можно добавить redirect: window.location.href = '/'; (если без React Router)
+      onClose()      // Здесь можно добавить redirect: window.location.href = '/'; (если без React Router)
     } catch (err) {
       // Обработка ошибок (например, если email уже занят или сервер упал)
       setError(err);
@@ -72,7 +72,7 @@ export default function Registration({onClose}){
           onChange={(e)=>setPassword(e.target.value)}
           required
            />
-          <button className="login-button" type="submit" onClick={onClose}>Зарегистрироваться</button>
+          <button className="login-button" type="submit" >Зарегистрироваться</button>
         </form>
         </Modal>
     )
