@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { useState } from "react";
 import './Header.css'
@@ -13,9 +13,37 @@ import Modal from "./Modal";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const {theme, setTheme} = useContext(ThemeContext)
+  const [authBlock,setAuthBlock] = useState(null)
+  const {authorised, setAuthorised, userAuth,setUserAuth} = useContext(AuthContext)
+  const {theme, setTheme} = useContext(ThemeContext);
 
-  
+  useEffect(() => {
+    if (authorised) {
+      setAuthBlock(
+        <div className="user-block">
+          <div className="username">{userAuth.name}</div>
+          <button
+            className={`btn-${theme}`}
+            onClick={() => {
+              setAuthorised(false);
+              localStorage.removeItem("user");
+            }}
+          >
+            Выйти
+          </button>
+        </div>
+      );
+    } else {
+      setAuthBlock(
+        <button className={`btn-${theme}`} onClick={() => setIsOpen(true)}>
+          Войти
+        </button>
+      );
+    }
+  }, [theme,userAuth,authorised,setAuthorised]
+
+  )
+
 
   return (
     <header className="topbar">
@@ -47,7 +75,7 @@ export default function Header() {
         </button>
         <button className={`btn-${theme}`}>Избранное</button>
         <button className={`btn-${theme}`}>Сообщения</button>
-        <button className={`btn-${theme}`} onClick={()=>setIsOpen(true)}>Войти</button>
+        {authBlock}
 
         
       </nav>

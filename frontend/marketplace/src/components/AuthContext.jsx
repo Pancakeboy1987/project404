@@ -7,18 +7,19 @@ export default function ContextProvider({children}){
     const [userAuth, setUserAuth]=useState(null)
     const [authorised, setAuthorised]=useState(false)
 
-    const login = (userData) =>{
+    function login(userData){
         setAuthorised(true)
         setUserAuth(userData)
+        console.log(userData)
         
 
     }
 
-    
+
 
     
       return (
-        <AuthContext.Provider value={{ userAuth, login, authorised}}>
+        <AuthContext.Provider value={{ userAuth, login, authorised,setUserAuth,setAuthorised}}>
           {children}
         </AuthContext.Provider>
       );
