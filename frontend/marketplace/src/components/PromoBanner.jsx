@@ -1,9 +1,13 @@
 import React from "react";
 import './PromoBanner.css'
+import { useContext } from "react";
+import { ThemeContext } from "./Contexts";
 
 export default function PromoBanner() {
+  const {theme,setTheme} = useContext(ThemeContext)
+
   return (
-    <div className="promo">
+    <div className={`promo-${theme}`}>
       <div>
         <div className="main-text">Разместите объявление прямо сейчас!</div>
         <div className="other-text">
@@ -11,7 +15,7 @@ export default function PromoBanner() {
         </div>
       </div>
       <div>
-        <button className="btn">Разместить</button>
+        <button className={`btn-${theme}`}>Разместить</button>
       </div>
     </div>
   );

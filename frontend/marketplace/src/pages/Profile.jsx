@@ -1,18 +1,14 @@
 import React from "react";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
-import Categories from "../components/Categories";
-import PromoBanner from "../components/PromoBanner";
-import ListingCard from "../components/ListingCard";
-import Footer from "../components/Footer";
-import {goods} from "../components/Goods";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../components/Contexts";
+import { AuthContext } from "../components/AuthContext";
 
 
 
-export default function Home() {
+export default function Profile() {
 
   const {theme, setTheme} = useContext(ThemeContext)
 
@@ -28,22 +24,6 @@ export default function Home() {
             <button className={`btn-${theme}`}>Разместить объявление</button>
           </div>
         </div>
-
-        <Categories />
-
-        <PromoBanner />
-
-        <section>
-          <h2>Свежие объявления</h2>
-          <div className="grid">
-            {goods.map((item) => (
-              <ListingCard key={item.id} item={item} />
-            ))}
-          </div>
-        </section>
-      </main>
-
-      <Footer />
-    </div>
-  );
-}
+        </main>
+        </div>
+    )}

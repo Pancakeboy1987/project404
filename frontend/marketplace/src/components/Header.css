@@ -28,11 +28,15 @@
   transform: scale(1.15);
 }
 
-.btn:hover{
+.btn-light:hover{
   filter: drop-shadow(0 0 5em #2ec5ef6b);
   transform: scale(1.02);
   }
 
+.btn-dark:hover{
+    filter: drop-shadow(0 0 5em #2ec5ef6b);
+    transform: scale(1.02);
+    }
 
 .btn-light{
   background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));

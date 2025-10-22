@@ -1,13 +1,4 @@
 
-.promo {
-    background: linear-gradient(
-      90deg,rgba(252, 105, 0, 0.12),rgba(205, 93, 12, 0.253));
-    padding: 18px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
 
   .main-text{
     font-weight: 700;
@@ -25,4 +16,26 @@
     border: 0px solid #e6e6e6;
     padding: 8px 12px;
     border-radius: 8px;
+  }
+
+
+  .promo-light{
+    background: linear-gradient(
+      90deg,rgba(252, 105, 0, 0.12),rgba(205, 93, 12, 0.253));
+    padding: 18px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  .promo-dark{
+    background: linear-gradient(
+      90deg,rgba(252, 105, 0, 0.12),rgba(205, 93, 12, 0.253));
+    padding: 18px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
