@@ -21,7 +21,11 @@ export default function Header() {
     if (authorised) {
       setAuthBlock(
         <div className="user-block">
-          <div className="username">{userAuth.name}</div>
+          <div className="username">
+          <Link to={`/pages/profile`} target="_blank">
+          {userAuth.name}
+          </Link>
+          </div>
           <button
             className={`btn-${theme}`}
             onClick={() => {

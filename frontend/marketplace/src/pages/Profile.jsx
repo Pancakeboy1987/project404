@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../components/Contexts";
 import { AuthContext } from "../components/AuthContext";
 
-
+//////Итак, мне нужно будет сделать оформление профиля как на ютубе и сделать возможность загружать свою фотку
 
 export default function Profile() {
 
@@ -16,7 +16,7 @@ export default function Profile() {
     <div className={`site-${theme}`}>
       <Header />
 
-      <main>
+
         <div className="search-bar">
           <SearchBar />
           <div className="search-actions">
@@ -24,6 +24,10 @@ export default function Profile() {
             <button className={`btn-${theme}`}>Разместить объявление</button>
           </div>
         </div>
-        </main>
+
+        <div className={`profile-body-${theme}`}>
+
+        </div>
+
         </div>
     )}
