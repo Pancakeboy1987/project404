@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import ListingCard from "../components/ListingCard"
 import ProfileLists from "../components/profileComponents/ProfileLists";
+import ProfileButtons from "../components/profileComponents/ProfileButtons";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../components/Contexts";
@@ -31,6 +32,7 @@ export default function Profile() {
         </div>
 
         <div className={`profile-body-${theme}`}>
+            <div className={`profile-main-block-${theme}`}>
             <img className="profile-picture" src={`${voron}`} alt="" />
             <div className="profile-text-block">
                 <h3>Nickname</h3>
@@ -40,6 +42,8 @@ export default function Profile() {
                 <div className="star-block">
                     Here will be stars
                 </div>
+            </div>
+
 
             </div>
 
@@ -51,7 +55,11 @@ export default function Profile() {
             </div>
         </div>
 
-        <div>
+        <div className="profile-button-block">
+            <ProfileButtons/>
+        </div>
+
+        <div className="profile-lists-block">
             <ProfileLists/>
         </div>
         

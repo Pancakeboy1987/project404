@@ -1,0 +1,15 @@
+.buttons-list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:55px;
+}
+
+.buttons-list .btn-light{
+    width:180px;
+}
+
+.buttons-list .btn-light:hover{
+    filter: drop-shadow(0 0 2em #2ec5ef6b);
+    transform: scale(1.05);
+}
