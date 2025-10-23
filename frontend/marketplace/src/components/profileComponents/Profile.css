@@ -1,0 +1,39 @@
+.profile-picture{
+    width: 200px;        /* уменьшаем ширину */
+    height: 200px;       /* уменьшаем высоту */
+    object-fit: cover;   /* обрезает изображение по контейнеру, не искажая */
+    border-radius: 50%;
+  }
+
+  .profile-body-light{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+  }
+
+  .profile-body-light h3{
+    font-size: 30px;
+
+  }
+
+  .profile-text-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  
+  .profile-description{
+    width:300px;
+    border-top: 1px solid grey;
+  }
+
+
+  .profile-contacts-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 180px;
+  }
+  
