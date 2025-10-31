@@ -4,6 +4,7 @@ import { useState } from "react";
 import './Header.css'
 import { MdOutlineLightMode } from "react-icons/md"
 import Login from "./Login";
+
 import { ThemeContext } from "./Contexts";
 import  {AuthContext}  from "./AuthContext";
 
@@ -14,7 +15,7 @@ import Modal from "./Modal";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [authBlock,setAuthBlock] = useState(null)
-  const {authorised, setAuthorised, userAuth,setUserAuth} = useContext(AuthContext)
+  const {authorised, setAuthorised, userAuth,setUserAuth,logout} = useContext(AuthContext)
   const {theme, setTheme} = useContext(ThemeContext);
 
   useEffect(() => {
@@ -29,8 +30,7 @@ export default function Header() {
           <button
             className={`btn-${theme}`}
             onClick={() => {
-              setAuthorised(false);
-              localStorage.removeItem("user");
+              logout()
             }}
           >
             Выйти

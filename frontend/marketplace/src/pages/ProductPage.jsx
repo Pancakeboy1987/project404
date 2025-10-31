@@ -6,8 +6,14 @@ import Categories from "../components/Categories";
 import { review } from "../components/review";
 import ReviewCard from "../components/ReviewCard";
 import "../components/ProductPage.css"
+import { useContext } from "react";
+import { AuthContext } from "../components/AuthContext";
+import { ThemeContext } from "../components/Contexts";
 
 export default function ProductPage() {
+
+const {theme,setTheme}=useContext(ThemeContext)
+
   const { id } = useParams();
   const product = goods.find((p) => p.id === Number(id));
 
@@ -23,15 +29,15 @@ export default function ProductPage() {
       <div className="search-bar">
         <SearchBar />
         <div className="search-actions">
-          <button className="btn">Поиск</button>
-          <button className="btn">Разместить объявление</button>
+          <button className={`btn-${theme}`}>Поиск</button>
+          <button className={`btn-${theme}`}>Разместить объявление</button>
         </div>
       </div>
       </div>
 
         <div className="product-container">
 
-        <div className="left-block">
+        <div className={`left-block-${theme}`}>
         <div className="product-image">
             <img src={product.img} alt={product.title} />
         </div>
@@ -42,8 +48,8 @@ export default function ProductPage() {
         </div>
         </div>
 
-        <div className="right-block">
-        <div className="seller-card">
+        <div className={`right-block-${theme}`}>
+        <div className={`seller-card-${theme}`}>
           <div className="contact-info">
           <h4>Продавец:</h4>
           <h3>Иван Иванов</h3>

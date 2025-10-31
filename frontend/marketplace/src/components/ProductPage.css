@@ -7,7 +7,7 @@
     
   }
 
-  .left-block{
+  .left-block-light{
     display:flex;
     flex-direction: column;
     width:1300px;
@@ -18,7 +18,19 @@
     box-shadow: 1px 1px rgba(224, 224, 224, 0.568);
   }
 
-.right-block{
+  .left-block-dark{
+    display:flex;
+    flex-direction: column;
+    width:1300px;
+    border: 1px solid #30c2ea53;
+    border-radius: 25px;
+    margin:20px;
+    background: rgb(31,33,40);
+    box-shadow: 1px 1px rgba(224, 224, 224, 0.568);
+  }
+
+
+.right-block-light{
   display:flex;
   padding: 15px;
   border: 1px solid #ddd;
@@ -31,6 +43,18 @@
 
 }
 
+.right-block-dark{
+  display:flex;
+  padding: 15px;
+  border: 1px solid #696868;
+  box-shadow: 1px 1px #70d9f675;
+  border-radius: 15px;
+  width:500px;
+  background-color:rgb(31,33,40);
+  display: flex;
+  flex-direction: column;
+
+}
 
 .product-image{
   padding: 10px;
@@ -65,7 +89,7 @@
     line-height: 1.5;
   }
   
-  .seller-card {
+  .seller-card-light {
 
     padding: 15px;
     border: 1px solid #ddd;
@@ -78,6 +102,21 @@
     height: 400px;
     gap:130px
   }
+
+  .seller-card-dark {
+
+    padding: 15px;
+    border: 1px solid #696868;
+    box-shadow: 1px 1px #70d9f675;
+    border-radius: 15px;
+    width:400px;
+    background-color: rgb(31,33,40);
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    gap:130px
+  }
+  
   
   .contact-btn {
     background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
