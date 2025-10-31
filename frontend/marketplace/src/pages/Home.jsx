@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import {goods} from "../components/Goods";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { ThemeContext } from "../components/Contexts";
+import { ThemeContext } from "../components/providers/ThemeContext";
 
 
 

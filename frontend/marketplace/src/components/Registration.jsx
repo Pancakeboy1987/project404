@@ -1,6 +1,7 @@
 import Modal from "./Modal";
 import "./Registration.css";
 import { useState } from "react";
+import { ThemeContext } from "./providers/ThemeContext";
 
 export default function Registration({onClose}){
   const [email, setEmail] = useState('');

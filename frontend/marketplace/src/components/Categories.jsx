@@ -1,7 +1,7 @@
 import React from "react";
 import "./Categories.css"
 import { useContext } from "react";
-import { ThemeContext } from "./Contexts";
+import { ThemeContext } from "./providers/ThemeContext";
 
 export default function Categories() {
   const cats = [

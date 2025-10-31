@@ -1,7 +1,7 @@
 import React from "react";
 import "./SearchBar.css"
 import { useContext } from "react";
-import { ThemeContext } from "./Contexts";
+import { ThemeContext } from "./providers/ThemeContext";
 
 export default function SearchBar() {
   const {theme, setTheme} = useContext(ThemeContext)

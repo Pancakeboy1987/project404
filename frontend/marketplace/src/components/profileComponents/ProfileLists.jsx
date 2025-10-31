@@ -2,7 +2,7 @@ import React from "react";
 import '../ListingCard.css'
 import {Link} from "react-router-dom"
 import { useContext } from "react";
-import { ThemeContext } from "../Contexts";
+import { ThemeContext } from "../providers/ThemeContext";
 import { goods} from "../Goods";
 import ListingCard from "../ListingCard";
 

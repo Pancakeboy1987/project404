@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: row;
     gap: 50px;
+    margin-bottom: 100px;
   }
 
   .profile-body-light h3{
@@ -16,7 +17,25 @@
 
   }
 
-  .profile-text-block{
+  .profile-body-dark{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+  }
+
+  .profile-body-dark h3{
+    font-size: 30px;
+
+  }
+
+  .profile-text-block-light{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .profile-text-block-dark{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,7 +60,21 @@
     box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
   }
 
-  .profile-contacts-block{
+  .profile-main-block-dark{
+    display: flex;
+    flex-direction: row;
+    gap:50px;
+    background: rgb(31,33,40);
+    border: 1px solid #696868;
+    border-radius: 25px;
+    min-width: 650px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
+  }
+
+  .profile-contacts-block-light{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,6 +85,34 @@
     background: rgb(255, 252, 252);
     box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
     padding: 10px;
+  }
+
+  .profile-contacts-block-light h2{
+    color: rgb(0, 179, 255);
+    font-weight: 800;
+  }
+
+  .profile-contacts-block-dark{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 240px;
+
+    border-radius: 25px;
+    background: rgb(31,33,40);
+    border: 1px solid #696868;
+    box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
+    padding: 10px;
+  }
+  
+
+  .contact-line{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:5px;
+    margin:0;
   }
   
 

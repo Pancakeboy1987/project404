@@ -1,7 +1,3 @@
-import { createContext } from 'react';
-
-export const ThemeContext = createContext(null);
-
 
 
 ///у нас данные с логина - когда мы заходим должны отправляться в провайдер который будет сделан не как предыдущий

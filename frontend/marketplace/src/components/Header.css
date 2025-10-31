@@ -96,16 +96,37 @@
   text-decoration: none;
 }
 
-.user-block{
+.user-block-light{
+  display:flex;
+  flex-direction: row;
+  gap:5px;
+  align-items: center;
+}
+.user-block-dark{
   display:flex;
   flex-direction: row;
   gap:5px;
   align-items: center;
 }
 
-.username{
+
+.username-light{
   padding:10px;
   color: aliceblue;
   background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
-  border-radius: 6px;;
+  border-radius: 6px;
+  text-decoration: none; 
+}
+
+.username-dark{
+  padding:10px;
+  color: aliceblue;
+  background: linear-gradient(rgb(0, 179, 255), rgb(4, 95, 169));
+  border-radius: 6px;
+  text-decoration: none; 
+}
+
+.profile-link{
+  color: #fff;
+  text-decoration: none;
 }
