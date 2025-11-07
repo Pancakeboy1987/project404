@@ -28,7 +28,6 @@ export default function Profile() {
     localStorage.getItem("authorised");
 
     if (authorised){
-      console.log(userAuth)
       setNickBlock(
         <h3>{userAuth.name}</h3>
       )
@@ -41,7 +40,7 @@ export default function Profile() {
      
 
 
-  },[userAuth, authorised, nickBlock, setNickBlock, contactBlock, setContactBlock])
+  },[userAuth, setNickBlock, setContactBlock])
 
   return (
     <div className={`site-${theme}`}>

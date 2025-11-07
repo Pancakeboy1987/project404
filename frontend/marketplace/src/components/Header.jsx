@@ -45,7 +45,7 @@ export default function Header() {
         </button>
       );
     }
-  }, [theme, userAuth, authorised, setAuthorised,]);
+  }, [theme, userAuth, authorised, setAuthorised]);
 
   return (
     <header className="topbar">

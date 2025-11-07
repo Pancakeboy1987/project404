@@ -85,11 +85,17 @@
     background: rgb(255, 252, 252);
     box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
     padding: 10px;
+    gap: 0
   }
 
-  .profile-contacts-block-light h2{
+  .profile-contacts-block-light h2 {
     color: rgb(0, 179, 255);
     font-weight: 800;
+    margin: 0;
+  }
+
+  .profile-contacts-block-light h4{
+    margin: 0;
   }
 
   .profile-contacts-block-dark{
@@ -104,6 +110,11 @@
     border: 1px solid #696868;
     box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
     padding: 10px;
+    gap:1
+  }
+
+  .profile-contacts-block-dark h4{
+    margin: 0;
   }
   
 
