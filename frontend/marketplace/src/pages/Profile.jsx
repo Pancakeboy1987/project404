@@ -16,8 +16,8 @@ import "../components/profileComponents/profile.css";
 
 export default function Profile() {
   const { theme, setTheme } = useContext(ThemeContext);
-  const { authorised, setAuthorised, userAuth, setUserAuth, logout } =
-  useContext(AuthContext);
+  const { authorised, setAuthorised, userAuth, setUserAuth, logout, login } =
+    useContext(AuthContext);
 
   return (
     <div className={`site-${theme}`}>
@@ -45,10 +45,18 @@ export default function Profile() {
         </div>
 
         <div className={`profile-contacts-block-${theme}`}>
-          <div><h2>Контакты</h2></div>
-          <div className="contact-line"><h4>Номер телефона:</h4> 88005553535</div>
-          <div className="contact-line"><h4>Почта: зане41181собака</h4></div>
-          <div className="contact-line"><h4>соцсетей </h4>нет</div>
+          <div>
+            <h2>Контакты</h2>
+          </div>
+          <div className="contact-line">
+            <h4>Номер телефона:</h4> 88005553535
+          </div>
+          <div className="contact-line">
+            <h4>Почта: зане41181собака</h4>
+          </div>
+          <div className="contact-line">
+            <h4>соцсетей </h4>нет
+          </div>
         </div>
       </div>
 
