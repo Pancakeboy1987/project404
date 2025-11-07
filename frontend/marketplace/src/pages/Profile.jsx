@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import ListingCard from "../components/ListingCard";
 import ProfileLists from "../components/profileComponents/ProfileLists";
 import ProfileButtons from "../components/profileComponents/ProfileButtons";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext,useState } from "react";
 import { ThemeContext } from "../components/providers/ThemeContext";
 import { AuthContext } from "../components/providers/AuthContext";
 import voron from "../assets/voron.jpg";
@@ -18,6 +18,30 @@ export default function Profile() {
   const { theme, setTheme } = useContext(ThemeContext);
   const { authorised, setAuthorised, userAuth, setUserAuth, logout, login } =
     useContext(AuthContext);
+  const [nickBlock, setNickBlock] = useState(null);
+  const [contactBlock, setContactBlock] = useState(null);
+
+
+
+  useEffect(() =>{
+    localStorage.getItem("userAuth");
+    localStorage.getItem("authorised");
+
+    if (authorised){
+      console.log(userAuth)
+      setNickBlock(
+        <h3>{userAuth.name}</h3>
+      )
+      setContactBlock(
+        <>{userAuth.email}</>
+      )
+    }else{
+      setNickBlock(<h3>Name</h3>)
+    }
+     
+
+
+  },[userAuth, authorised, nickBlock, setNickBlock, contactBlock, setContactBlock])
 
   return (
     <div className={`site-${theme}`}>
@@ -35,7 +59,7 @@ export default function Profile() {
         <div className={`profile-main-block-${theme}`}>
           <img className="profile-picture" src={`${voron}`} alt="" />
           <div className={`profile-text-block-${theme}`}>
-            <h3>{userAuth.name}</h3>
+            {nickBlock}
             <div className="profile-description">
               dolor sit amet, consectetuer adipiscing elit. Aenean commodo
               ligula eget dolor.
@@ -52,7 +76,7 @@ export default function Profile() {
             <h4>Номер телефона:</h4> 88005553535
           </div>
           <div className="contact-line">
-            <h4>Почта: зане41181собака</h4>
+            <h4>Почта:</h4> {contactBlock}
           </div>
           <div className="contact-line">
             <h4>соцсетей </h4>нет
