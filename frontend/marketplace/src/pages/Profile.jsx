@@ -20,27 +20,62 @@ export default function Profile() {
     useContext(AuthContext);
   const [nickBlock, setNickBlock] = useState(null);
   const [contactBlock, setContactBlock] = useState(null);
-
+  const [descriptionBlock, setDescriptionBlock]=useState("dolor sit amet, consectetuer adipiscing elit.")
+  const [editedPhoto, setEditedPhoto] = useState(null); // Файл фото
+  const [photoPreview, setPhotoPreview] = useState(userAuth?.profilePicture || voron); // Предпросмотр фото
+  const [isEditing, setIsEditing] = useState(false); // Режим редактирования
 
 
   useEffect(() =>{
     localStorage.getItem("userAuth");
     localStorage.getItem("authorised");
 
+    const user = userAuth
+
     if (authorised){
       setNickBlock(
-        <h3>{userAuth.name}</h3>
+        <h3>{user.name}</h3>
       )
       setContactBlock(
-        <>{userAuth.email}</>
+        <>{user.email}</>
+      )
+      setDescriptionBlock(
+        user.description||''
+      )
+      setEditedPhoto(
+        user.image||''
       )
     }else{
       setNickBlock(<h3>Name</h3>)
     }
      
+  },[userAuth, setNickBlock, setContactBlock,setDescriptionBlock,setEditedPhoto])
 
+  const handleSubmit = async (event)=>{
 
-  },[userAuth, setNickBlock, setContactBlock])
+    event.preventDefault()
+    try {
+      // Собираем данные из формы
+      const updatedUserData = {updatedName,description,image };
+      console.log(updatedUserData);
+
+      // Fetch-запрос на регистрацию (как в примере, но с реальными данными из формы)
+      const response = await fetch("http://localhost:7000/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedUserData), // Преобразуем объект в JSON
+      });
+
+      // Здесь можно добавить redirect: window.location.href = '/'; (если без React Router)
+    } catch (err) {
+      // Обработка ошибок (например, если email уже занят или сервер упал)
+      setError(err);
+      console.error("Error:", err);
+    }
+  };
+
+///тут хэндлер если изменения отменяем
+  
 
   return (
     <div className={`site-${theme}`}>
@@ -81,6 +116,8 @@ export default function Profile() {
             <h4>соцсетей </h4>нет
           </div>
         </div>
+
+        <button className="profile-edit-btn"></button>
       </div>
 
       <div className="profile-button-block">
