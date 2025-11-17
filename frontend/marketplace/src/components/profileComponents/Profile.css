@@ -139,11 +139,19 @@
     padding-top: 30px;
   }
 
-  .profile-edit-btn{
+  .profile-edit-btn-light{
     border:0;
     border-radius: 25px;
     margin-top:10px;
     height: 45px;
     width: 45px;
-    background-color: aqua;
+    color:white;
+    font-size: large;
+    background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
   }
+
+  .profile-edit-btn-light:hover{
+    filter: drop-shadow(1 1 5em #06b0dfb2);
+    transform: scale(1.06);
+    }
+  

@@ -12,6 +12,8 @@ import voron from "../assets/voron.jpg";
 import { goods } from "../components/Goods";
 import "../components/profileComponents/profile.css";
 
+import { FaBroom } from "react-icons/fa";
+
 //////Итак, мне нужно будет сделать оформление профиля как на ютубе и сделать возможность загружать свою фотку
 
 export default function Profile() {
@@ -20,7 +22,7 @@ export default function Profile() {
     useContext(AuthContext);
   const [nickBlock, setNickBlock] = useState(null);
   const [contactBlock, setContactBlock] = useState(null);
-  const [descriptionBlock, setDescriptionBlock]=useState("dolor sit amet, consectetuer adipiscing elit.")
+  const [descriptionBlock, setDescriptionBlock]=useState("")
   const [editedPhoto, setEditedPhoto] = useState(null); // Файл фото
   const [photoPreview, setPhotoPreview] = useState(userAuth?.profilePicture || voron); // Предпросмотр фото
   const [isEditing, setIsEditing] = useState(false); // Режим редактирования
@@ -34,13 +36,13 @@ export default function Profile() {
 
     if (authorised){
       setNickBlock(
-        <h3>{user.name}</h3>
+        user.name ||'name' 
       )
       setContactBlock(
         <>{user.email}</>
       )
       setDescriptionBlock(
-        user.description||''
+        user.description||'dolor sit amet, consectetuer adipiscing elit.'
       )
       setEditedPhoto(
         user.image||''
@@ -56,7 +58,7 @@ export default function Profile() {
     event.preventDefault()
     try {
       // Собираем данные из формы
-      const updatedUserData = {updatedName,description,image };
+      const updatedUserData = {nickBlock,descriptionBlock,image };
       console.log(updatedUserData);
 
       // Fetch-запрос на регистрацию (как в примере, но с реальными данными из формы)
@@ -77,6 +79,7 @@ export default function Profile() {
 ///тут хэндлер если изменения отменяем
   
 
+
   return (
     <div className={`site-${theme}`}>
       <Header />
@@ -93,11 +96,31 @@ export default function Profile() {
         <div className={`profile-main-block-${theme}`}>
           <img className="profile-picture" src={`${voron}`} alt="" />
           <div className={`profile-text-block-${theme}`}>
-            {nickBlock}
-            <div className="profile-description">
-              dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-              ligula eget dolor.
-            </div>
+          {isEditing ? (
+              <>
+                <input
+                  type="text"
+                  value={nickBlock}
+                  onChange={(e) => setNickBlock(e.target.value)}
+                  placeholder="Никнейм"
+                />
+                <textarea
+                  value={descriptionBlock}
+                  onChange={(e) => setDescriptionBlock(e.target.value)}
+                  placeholder="Описание"
+                />
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => setEditedPhoto(e.target.files[0])}
+                />
+              </>
+            ) : (
+              <>
+                <h3>{nickBlock}</h3>
+                <div className="profile-description">{descriptionBlock}</div>
+              </>
+            )}
             <div className="star-block">Here will be stars</div>
           </div>
         </div>
@@ -117,8 +140,25 @@ export default function Profile() {
           </div>
         </div>
 
-        <button className="profile-edit-btn"></button>
+        {authorised && !isEditing && (
+        <button className={`profile-edit-btn-${theme}`} onClick={() => setIsEditing(true)}>
+          <FaBroom />
+        </button>
+      )}
+      {isEditing && (
+        <div>
+          <button className={`btn-${theme}`} onClick={handleSubmit}>
+            Сохранить
+          </button>
+          <button className={`btn-${theme}`} onClick={handleSubmit}>
+            Отмена
+          </button>
+        </div>
+      )}
+
       </div>
+
+
 
       <div className="profile-button-block">
         <ProfileButtons />
