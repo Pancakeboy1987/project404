@@ -53,6 +53,14 @@ export default function Profile() {
      
   },[userAuth, setNickBlock, setContactBlock,setDescriptionBlock,setEditedPhoto])
 
+  useEffect(() => {
+    if (editedPhoto) {
+      const previewUrl = URL.createObjectURL(editedPhoto);
+      setPhotoPreview(previewUrl);
+      return () => URL.revokeObjectURL(previewUrl); // Очистка
+    }
+  }, [editedPhoto]);
+
   const handleSubmit = async (event)=>{
 
     event.preventDefault()
@@ -78,6 +86,18 @@ export default function Profile() {
 
 ///тут хэндлер если изменения отменяем
   
+const handleCancel = () => {
+  if (authorised) {
+    setNickBlock(userAuth?.name || "name");
+    setDescriptionBlock(userAuth?.description || "dolor sit amet, consectetuer adipiscing elit.");
+    setPhotoPreview(userAuth?.image || voron);
+  } else {
+    setNickBlock("Name");
+  }
+  setEditedPhoto(null); // Сбрасываем файл фото
+  setIsEditing(false); // Выходим из режима редактирования
+};
+
 
 
   return (
@@ -146,11 +166,11 @@ export default function Profile() {
         </button>
       )}
       {isEditing && (
-        <div>
+        <div className="editing-btn">
           <button className={`btn-${theme}`} onClick={handleSubmit}>
             Сохранить
           </button>
-          <button className={`btn-${theme}`} onClick={handleSubmit}>
+          <button className={`btn-${theme}`} onClick={handleCancel}>
             Отмена
           </button>
         </div>

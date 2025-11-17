@@ -1,145 +1,183 @@
-.profile-picture{
-    width: 120px;        /* уменьшаем ширину */
-    height: 120px;       /* уменьшаем высоту */
-    object-fit: cover;   /* обрезает изображение по контейнеру, не искажая */
-    border-radius: 50%;
+.profile-picture {
+  width: 120px;        /* уменьшаем ширину */
+  height: 120px;       /* уменьшаем высоту */
+  object-fit: cover;   /* обрезает изображение по контейнеру, не искажая */
+  border-radius: 50%;
+}
+
+.profile-body-light{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-bottom: 100px;
+  transition: all 0.3s ease; /* Добавлено: плавный переход для изменений размеров */
+}
+
+.profile-body-light h3{
+  font-size: 30px;
+}
+
+.profile-body-dark{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  transition: all 0.3s ease; /* Добавлено: плавный переход для изменений размеров */
+}
+
+.profile-body-dark h3{
+  font-size: 30px;
+}
+
+.profile-text-block-light{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 150px; /* Добавлено: минимальная высота, чтобы блок не сжимался при редактировании */
+  width: 300px; /* Добавлено: фиксированная ширина, чтобы соответствовать .profile-description */
+  transition: height 0.3s ease; /* Добавлено: плавный переход высоты */
+}
+
+.profile-text-block-dark{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 150px; /* Добавлено: минимальная высота, чтобы блок не сжимался при редактировании */
+  width: 300px; /* Добавлено: фиксированная ширина, чтобы соответствовать .profile-description */
+  transition: height 0.3s ease; /* Добавлено: плавный переход высоты */
+}
+
+.profile-description{
+  width:300px;
+  border-top: 1px solid grey;
+  min-height: 50px; /* Добавлено: минимальная высота для описания, чтобы textarea не сжимала */
+}
+
+.profile-main-block-light{
+  display: flex;
+  flex-direction: row;
+  gap:50px;
+  background: white;
+  border-radius: 25px;
+  min-width: 650px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
+  min-height: 200px; /* Добавлено: минимальная высота, чтобы блок не уменьшался при редактировании */
+  transition: height 0.3s ease; /* Добавлено: плавный переход высоты */
+}
+
+.profile-main-block-dark{
+  display: flex;
+  flex-direction: row;
+  gap:50px;
+  background: rgb(31,33,40);
+  border: 1px solid #696868;
+  border-radius: 25px;
+  min-width: 650px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
+  min-height: 200px; /* Добавлено: минимальная высота, чтобы блок не уменьшался при редактировании */
+  transition: height 0.3s ease; /* Добавлено: плавный переход высоты */
+}
+
+.profile-contacts-block-light{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 130px;
+  border:0;
+  border-radius: 25px;
+  background: rgb(255, 252, 252);
+  box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
+  padding: 10px;
+  gap: 0;
+  min-width: 200px; /* Добавлено: минимальная ширина, чтобы блок не сжимался */
+  min-height: 150px; /* Добавлено: минимальная высота, чтобы блок не уменьшался */
+  transition: all 0.3s ease; /* Добавлено: плавный переход для изменений */
+  resize: none;
+}
+
+.profile-contacts-block-light h2 {
+  color: rgb(0, 179, 255);
+  font-weight: 800;
+  margin: 0;
+}
+
+.profile-contacts-block-light h4{
+  margin: 0;
+}
+
+.profile-contacts-block-dark{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 130px;
+  border-radius: 25px;
+  background: rgb(31,33,40);
+  border: 1px solid #696868;
+  box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
+  padding: 10px;
+  gap:1;
+  min-width: 200px; /* Добавлено: минимальная ширина, чтобы блок не сжимался */
+  min-height: 150px; /* Добавлено: минимальная высота, чтобы блок не уменьшался */
+  transition: all 0.3s ease; /* Добавлено: плавный переход для изменений */
+  resize: none;
+}
+
+.profile-contacts-block-dark h4{
+  margin: 0;
+}
+
+.profile-contacts-block-dark h2 {
+  color: rgb(1, 138, 197);
+  font-weight: 800;
+  margin: 0;
+}
+
+
+.contact-line{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap:5px;
+  margin:0;
+}
+
+
+.profile-lists-block{
+  margin-top: 20px;
+  border-top: 1px solid grey;
+}
+
+.profile-button-block{
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  padding-top: 30px;
+}
+
+.profile-edit-btn-light{
+  border:0;
+  border-radius: 25px;
+  margin-top:10px;
+  height: 45px;
+  width: 45px;
+  color:white;
+  font-size: large;
+  background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
+}
+
+.profile-edit-btn-light:hover{
+  filter: drop-shadow(1 1 5em #06b0dfb2);
+  transform: scale(1.06);
   }
 
-  .profile-body-light{
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    margin-bottom: 100px;
-  }
-
-  .profile-body-light h3{
-    font-size: 30px;
-
-  }
-
-  .profile-body-dark{
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-  }
-
-  .profile-body-dark h3{
-    font-size: 30px;
-
-  }
-
-  .profile-text-block-light{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-  }
-
-  .profile-text-block-dark{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-  }
-  
-  .profile-description{
-    width:300px;
-    border-top: 1px solid grey;
-  }
-
-  .profile-main-block-light{
-    display: flex;
-    flex-direction: row;
-    gap:50px;
-    background: white;
-    border-radius: 25px;
-    min-width: 650px;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 10px;
-    box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
-  }
-
-  .profile-main-block-dark{
-    display: flex;
-    flex-direction: row;
-    gap:50px;
-    background: rgb(31,33,40);
-    border: 1px solid #696868;
-    border-radius: 25px;
-    min-width: 650px;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 10px;
-    box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
-  }
-
-  .profile-contacts-block-light{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 130px;
-    border:0;
-    border-radius: 25px;
-    background: rgb(255, 252, 252);
-    box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
-    padding: 10px;
-    gap: 0
-  }
-
-  .profile-contacts-block-light h2 {
-    color: rgb(0, 179, 255);
-    font-weight: 800;
-    margin: 0;
-  }
-
-  .profile-contacts-block-light h4{
-    margin: 0;
-  }
-
-  .profile-contacts-block-dark{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-left: 130px;
-
-    border-radius: 25px;
-    background: rgb(31,33,40);
-    border: 1px solid #696868;
-    box-shadow: 2px 2px rgba(102, 205, 243, 0.188);
-    padding: 10px;
-    gap:1
-  }
-
-  .profile-contacts-block-dark h4{
-    margin: 0;
-  }
-  
-
-  .contact-line{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap:5px;
-    margin:0;
-  }
-  
-
-  .profile-lists-block{
-    margin-top: 20px;
-    border-top: 1px solid grey;
-  }
-
-  .profile-button-block{
-    display: flex;
-    align-self: center;
-    justify-self: center;
-    padding-top: 30px;
-  }
-
-  .profile-edit-btn-light{
+  .profile-edit-btn-dark{
     border:0;
     border-radius: 25px;
     margin-top:10px;
@@ -147,11 +185,55 @@
     width: 45px;
     color:white;
     font-size: large;
-    background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
+    background: linear-gradient(rgb(0, 179, 255), rgb(4, 95, 169));
   }
-
-  .profile-edit-btn-light:hover{
+  
+  .profile-edit-btn-dark:hover{
     filter: drop-shadow(1 1 5em #06b0dfb2);
     transform: scale(1.06);
     }
-  
+
+
+
+.editing-btn{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+
+/* Новые стили: для полей ввода в режиме редактирования */
+.profile-text-block-light input,
+.profile-text-block-dark input {
+  font-size: 30px; /* Соответствует h3 */
+  width: 100%; /* Занимает всю ширину контейнера (300px) */
+  border: none; /* Убираем дефолтный border, чтобы не добавлялось лишнее пространство */
+  padding: 0; /* Убираем padding, чтобы размер совпадал */
+  margin: 0; /* Убираем margins */
+  background: transparent; /* Прозрачный фон, чтобы вписывался */
+  color: inherit; /* Наследуем цвет текста от темы */
+  text-align: center; /* Центрируем, как в оригинале */
+}
+
+.profile-text-block-light textarea,
+.profile-text-block-dark textarea {
+  width: 300px; /* Соответствует .profile-description */
+  min-height: 50px; /* Минимальная высота, чтобы не сжималась */
+  border-top: 1px solid grey; /* Соответствует .profile-description */
+  border-bottom: none; /* Убираем другие borders */
+  border-left: none;
+  border-right: none;
+  padding: 0; /* Убираем padding */
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  resize: none; /* Запрещаем ресайз, чтобы размер не менялся вручную */
+  overflow: hidden; /* Скрываем скролл, если текст короткий */
+  text-align: center; /* Центрируем */
+}
+
+
+.profile-text-block-light input[type="file"],
+.profile-text-block-dark input[type="file"] {
+  width: 300px; /* Фиксированная ширина */
+  margin-top: 10px; /* Отступ, чтобы не сжимал блок */
+}
