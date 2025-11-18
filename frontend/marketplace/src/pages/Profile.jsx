@@ -53,6 +53,8 @@ export default function Profile() {
      
   },[userAuth, setNickBlock, setContactBlock,setDescriptionBlock,setEditedPhoto])
 
+
+  ///прдпросмотр фото
   useEffect(() => {
     if (editedPhoto) {
       const previewUrl = URL.createObjectURL(editedPhoto);
@@ -65,22 +67,47 @@ export default function Profile() {
 
     event.preventDefault()
     try {
+      const id = userAuth.id
       // Собираем данные из формы
-      const updatedUserData = {nickBlock,descriptionBlock,image };
+      const updatedUserData = {nickBlock,descriptionBlock,editedPhoto,id };
       console.log(updatedUserData);
+      console.log(userAuth)
 
       // Fetch-запрос на регистрацию (как в примере, но с реальными данными из формы)
-      const response = await fetch("http://localhost:7000/api/auth/login", {
-        method: "POST",
+      const response = await fetch(`http://localhost:7000/api/auth/edit`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedUserData), // Преобразуем объект в JSON
       });
 
       // Здесь можно добавить redirect: window.location.href = '/'; (если без React Router)
-    } catch (err) {
-      // Обработка ошибок (например, если email уже занят или сервер упал)
-      setError(err);
-      console.error("Error:", err);
+      if (!response.ok) {
+        throw new Error("Ошибка обновления профиля");
+      }
+
+
+      ////
+      ////
+      ////пофиксить баг из-за которого в юзер ауфе
+      ////появляются данные без почты и ника
+      ////
+      const updatedUser = await response.json();
+      setUserAuth(updatedUser); // Обновляем контекст
+      localStorage.setItem("userAuth", JSON.stringify(updatedUser)); // Сохраняем в localStorage
+      ////
+      ////
+      ////
+
+      // Обновляем блоки
+      setNickBlock(<h3>{updatedUser.name}</h3>);
+      setContactBlock(<>{updatedUser.email}</>);
+      setPhotoPreview(updatedUser.profilePicture || voron);
+
+      setIsEditing(false); // Выходим из режима редактирования
+      alert("Профиль обновлён!");
+    } catch (error) {
+      console.error(error);
+      alert("Ошибка при сохранении");
     }
   };
 

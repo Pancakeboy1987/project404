@@ -45,7 +45,7 @@ export default function ({ onClose }) {
 
       //передаем данные в логин - функцию провайдера аутентификации для дальнейшего использования в компонентах
 
-      login({ token: data.token, name: data.user.name, email: data.user.email });
+      login({ token: data.token, name: data.user.name, email: data.user.email, id:data.user.id });
 
       // Устанавливаем успех (можно перенаправить на главную страницу)
       setSuccess(true);
