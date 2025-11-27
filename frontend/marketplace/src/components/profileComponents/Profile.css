@@ -34,7 +34,8 @@
   align-items: center;
   min-height: 150px; /* Добавлено: минимальная высота, чтобы блок не сжимался при редактировании */
   width: 300px; /* Добавлено: фиксированная ширина, чтобы соответствовать .profile-description */
-  transition: height 0.3s ease; /* Добавлено: плавный переход высоты */
+  transition: height 0.3s ease;
+  transition: all 0.3s ease;  /* Добавлено: плавный переход высоты */
 }
 
 .profile-text-block-dark{
@@ -43,7 +44,8 @@
   align-items: center;
   min-height: 150px; /* Добавлено: минимальная высота, чтобы блок не сжимался при редактировании */
   width: 300px; /* Добавлено: фиксированная ширина, чтобы соответствовать .profile-description */
-  transition: height 0.3s ease; /* Добавлено: плавный переход высоты */
+  transition: height 0.3s ease;
+  transition: all 0.3s ease;  /* Добавлено: плавный переход высоты */
 }
 
 .profile-description{

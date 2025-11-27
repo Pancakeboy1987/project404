@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import SearchBar from "../components/SearchBar";
 import ListingCard from "../components/ListingCard";
 import ProfileLists from "../components/profileComponents/ProfileLists";
 import ProfileButtons from "../components/profileComponents/ProfileButtons";
 import { Link } from "react-router-dom";
-import { useContext,useState } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "../components/providers/ThemeContext";
 import { AuthContext } from "../components/providers/AuthContext";
 import voron from "../assets/voron.jpg";
@@ -18,43 +18,29 @@ import { FaBroom } from "react-icons/fa";
 
 export default function Profile() {
   const { theme, setTheme } = useContext(ThemeContext);
-  const { authorised, setAuthorised, userAuth, setUserAuth, logout, login } =
-    useContext(AuthContext);
-  const [nickBlock, setNickBlock] = useState(null);
-  const [contactBlock, setContactBlock] = useState(null);
-  const [descriptionBlock, setDescriptionBlock]=useState("")
+  const { authorised, setAuthorised, userAuth, setUserAuth, logout, login } = useContext(AuthContext);
+  const [nickBlock, setNickBlock] = useState('');
+  const [contactBlock, setContactBlock] = useState('');
+  const [descriptionBlock, setDescriptionBlock] = useState('');
   const [editedPhoto, setEditedPhoto] = useState(null); // Файл фото
-  const [photoPreview, setPhotoPreview] = useState(userAuth?.profilePicture || voron); // Предпросмотр фото
+  const baseUrl = 'http://localhost:7000'; // Базовый URL бэкенда
+  const [photoPreview, setPhotoPreview] = useState(userAuth?.image ? `${baseUrl}/${userAuth.image}` : voron); // Предпросмотр фото с полным URL
   const [isEditing, setIsEditing] = useState(false); // Режим редактирования
 
+  useEffect(() => {
+    const user = userAuth;
 
-  useEffect(() =>{
-    localStorage.getItem("userAuth");
-    localStorage.getItem("authorised");
-
-    const user = userAuth
-
-    if (authorised){
-      setNickBlock(
-        user.name ||'name' 
-      )
-      setContactBlock(
-        <>{user.email}</>
-      )
-      setDescriptionBlock(
-        user.description||'dolor sit amet, consectetuer adipiscing elit.'
-      )
-      setEditedPhoto(
-        user.image||''
-      )
-    }else{
-      setNickBlock(<h3>Name</h3>)
+    if (authorised && !isEditing) {  // Добавили !isEditing, чтобы не ресетить во время/после редактирования
+      setNickBlock(user?.name || 'name');
+      setContactBlock(user?.email || '');
+      setDescriptionBlock(user?.description || 'dolor sit amet, consectetuer adipiscing elit.');
+      setPhotoPreview(user?.image ? `${baseUrl}/${user.image}` : voron);  // Полный URL для фото с сервера
+    } else if (!authorised) {
+      setNickBlock('Name');
     }
-     
-  },[userAuth, setNickBlock, setContactBlock,setDescriptionBlock,setEditedPhoto])
+  }, [userAuth, authorised, isEditing]);  // Добавили isEditing в deps, чтобы useEffect сработал после выхода из редактирования
 
-
-  ///прдпросмотр фото
+  // Предпросмотр фото
   useEffect(() => {
     if (editedPhoto) {
       const previewUrl = URL.createObjectURL(editedPhoto);
@@ -63,46 +49,37 @@ export default function Profile() {
     }
   }, [editedPhoto]);
 
-  const handleSubmit = async (event)=>{
-
-    event.preventDefault()
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      const id = userAuth.id
-      // Собираем данные из формы
-      const updatedUserData = {nickBlock,descriptionBlock,editedPhoto,id };
-      console.log(updatedUserData);
-      console.log(userAuth)
+      const id = userAuth.id;
 
-      // Fetch-запрос на регистрацию (как в примере, но с реальными данными из формы)
+      // Используем FormData для текста + файла
+      const formData = new FormData();
+      formData.append('nickBlock', nickBlock);
+      formData.append('descriptionBlock', descriptionBlock);
+      formData.append('id', id);
+      if (editedPhoto) {
+        formData.append('image', editedPhoto);  // Файл как 'image'
+      }
+
       const response = await fetch(`http://localhost:7000/api/auth/edit`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedUserData), // Преобразуем объект в JSON
+        body: formData,  // Нет headers Content-Type — браузер сам установит multipart/form-data
       });
 
-      // Здесь можно добавить redirect: window.location.href = '/'; (если без React Router)
       if (!response.ok) {
         throw new Error("Ошибка обновления профиля");
       }
 
+      const updatedUserResponse = await response.json();
+      const updatedUser = updatedUserResponse.user;  // Из {message, user}
+      console.log(updatedUser);
 
-      ////
-      ////
-      ////пофиксить баг из-за которого в юзер ауфе
-      ////появляются данные без почты и ника
-      ////
-      const updatedUser = await response.json();
-      setUserAuth(updatedUser); // Обновляем контекст
-      localStorage.setItem("userAuth", JSON.stringify(updatedUser)); // Сохраняем в localStorage
-      ////
-      ////
-      ////
+      setUserAuth(updatedUser);
+      localStorage.setItem("userAuth", JSON.stringify(updatedUser));
 
-      // Обновляем блоки
-      setNickBlock(<h3>{updatedUser.name}</h3>);
-      setContactBlock(<>{updatedUser.email}</>);
-      setPhotoPreview(updatedUser.profilePicture || voron);
-
+      // useEffect обновит блоки, включая полный URL для photoPreview
       setIsEditing(false); // Выходим из режима редактирования
       alert("Профиль обновлён!");
     } catch (error) {
@@ -111,21 +88,17 @@ export default function Profile() {
     }
   };
 
-///тут хэндлер если изменения отменяем
-  
-const handleCancel = () => {
-  if (authorised) {
-    setNickBlock(userAuth?.name || "name");
-    setDescriptionBlock(userAuth?.description || "dolor sit amet, consectetuer adipiscing elit.");
-    setPhotoPreview(userAuth?.image || voron);
-  } else {
-    setNickBlock("Name");
-  }
-  setEditedPhoto(null); // Сбрасываем файл фото
-  setIsEditing(false); // Выходим из режима редактирования
-};
-
-
+  const handleCancel = () => {
+    if (authorised) {
+      setNickBlock(userAuth?.name || "name");
+      setDescriptionBlock(userAuth?.description || "dolor sit amet, consectetuer adipiscing elit.");
+      setPhotoPreview(userAuth?.image ? `${baseUrl}/${userAuth.image}` : voron); // Полный URL
+    } else {
+      setNickBlock("Name");
+    }
+    setEditedPhoto(null); // Сбрасываем файл фото
+    setIsEditing(false); // Выходим из режима редактирования
+  };
 
   return (
     <div className={`site-${theme}`}>
@@ -141,9 +114,9 @@ const handleCancel = () => {
 
       <div className={`profile-body-${theme}`}>
         <div className={`profile-main-block-${theme}`}>
-          <img className="profile-picture" src={`${voron}`} alt="" />
+          <img className="profile-picture" src={photoPreview} alt="" />  {/* Используем photoPreview */}
           <div className={`profile-text-block-${theme}`}>
-          {isEditing ? (
+            {isEditing ? (
               <>
                 <input
                   type="text"
@@ -188,24 +161,21 @@ const handleCancel = () => {
         </div>
 
         {authorised && !isEditing && (
-        <button className={`profile-edit-btn-${theme}`} onClick={() => setIsEditing(true)}>
-          <FaBroom />
-        </button>
-      )}
-      {isEditing && (
-        <div className="editing-btn">
-          <button className={`btn-${theme}`} onClick={handleSubmit}>
-            Сохранить
+          <button className={`profile-edit-btn-${theme}`} onClick={() => setIsEditing(true)}>
+            <FaBroom />
           </button>
-          <button className={`btn-${theme}`} onClick={handleCancel}>
-            Отмена
-          </button>
-        </div>
-      )}
-
+        )}
+        {isEditing && (
+          <div className="editing-btn">
+            <button className={`btn-${theme}`} onClick={handleSubmit}>
+              Сохранить
+            </button>
+            <button className={`btn-${theme}`} onClick={handleCancel}>
+              Отмена
+            </button>
+          </div>
+        )}
       </div>
-
-
 
       <div className="profile-button-block">
         <ProfileButtons />
