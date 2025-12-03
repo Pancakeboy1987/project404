@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -9,6 +9,7 @@ import ThemeContext from "./components/providers/ThemeContext";
 import Home from "./pages/Home";
 import ProductPage from "./pages/ProductPage";
 import Profile from "./pages/Profile";
+import CreateAdPage from "./pages/CreateAdPAge";
 
 import "./App.css";
 
@@ -25,6 +26,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/pages/:id" element={<ProductPage />} />
             <Route path="/pages/profile" element={<Profile />} />
+            <Route path="/pages/CreateAd" element={<CreateAdPage />} />
+
           </Routes>
         </BrowserRouter>
       </ThemeContext>

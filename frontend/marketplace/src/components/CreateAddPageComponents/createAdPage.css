@@ -1,0 +1,99 @@
+.main-title { font-weight: 700; }
+.alter-title { font-size: 12px; color: black; } /* Примечание: в темной теме возможно нужно будет менять цвет */
+.nav-btns { display: flex; gap: 10px; align-items: center; padding-left: 20px; padding-right: 30px; }
+.light-mode-btn { border: 0; font-size: 24px; color: rgb(0, 179, 255); background: 0; cursor: pointer; }
+.light-mode-btn:hover { filter: drop-shadow(0 0 2em #2ec5ef6b); transform: scale(1.15); }
+.btn-light:hover, .btn-dark:hover { filter: drop-shadow(0 0 5em #2ec5ef6b); transform: scale(1.02); }
+.btn-light { background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230)); color: azure; border: 0px solid #e6e6e6; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+.btn-dark { background: linear-gradient(rgb(0, 179, 255), rgb(4, 95, 169)); color: azure; border: 0px solid #e6e6e6; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+.topbar { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; }
+.logo { display: flex; align-items: center; gap: 15px; }
+.logo .mark { width: 42px; height: 42px; background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230)); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; text-decoration: none; }
+.user-block-light, .user-block-dark { display: flex; flex-direction: row; gap: 5px; align-items: center; }
+.username-light { padding: 10px; color: aliceblue; background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230)); border-radius: 6px; text-decoration: none; }
+.username-dark { padding: 10px; color: aliceblue; background: linear-gradient(rgb(0, 179, 255), rgb(4, 95, 169)); border-radius: 6px; text-decoration: none; }
+
+/* --- НОВЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ СОЗДАНИЯ ОБЪЯВЛЕНИЯ --- */
+
+/* Общий контейнер страницы */
+.page-container {
+  min-height: 100vh;
+  padding: 0 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.page-light { background-color: #f4f4f4; color: #333; }
+.page-dark { background-color: #1a1a1a; color: #f0f0f0; }
+
+/* Контейнер формы */
+.create-ad-wrapper {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.wrapper-light { background-color: #ffffff; }
+.wrapper-dark { background-color: #2b2b2b; }
+
+.form-group { margin-bottom: 20px; }
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Стилизация инпутов */
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  outline: none;
+  font-size: 16px;
+  transition: border-color 0.2s;
+  box-sizing: border-box; /* Важно чтобы padding не ломал ширину */
+}
+
+.input-light {
+  background-color: #f9f9f9;
+  border-color: #e0e0e0;
+  color: #333;
+}
+.input-light:focus { border-color: rgb(0, 179, 255); }
+
+.input-dark {
+  background-color: #383838;
+  border-color: #4a4a4a;
+  color: #fff;
+}
+.input-dark:focus { border-color: rgb(0, 179, 255); }
+
+/* Блок загрузки фото */
+.image-upload-box {
+  border: 2px dashed rgb(0, 179, 255);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 6px;
+  margin-top: 10px;
+  object-fit: contain;
+}
+
+textarea.form-input { resize: vertical; min-height: 100px; }
