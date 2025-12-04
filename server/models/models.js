@@ -13,7 +13,7 @@ const User = sequelize.define("user", {
 
 const Product = sequelize.define("Product", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  title: { type: DataTypes.STRING, primaryKey: true },
+  title: { type: DataTypes.STRING, allowNull: false },
   price: { type: DataTypes.INTEGER },
   location: { type: DataTypes.STRING },
   description: { type: DataTypes.STRING },
@@ -22,4 +22,5 @@ const Product = sequelize.define("Product", {
 
 
 module.exports = {User};
+module.exports = {Product};
 //ниже опишу связи но для начала у нас только два объекта

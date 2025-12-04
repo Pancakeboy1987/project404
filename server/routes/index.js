@@ -4,9 +4,12 @@ const router = new Router()
 const userRouter = require('./userRouter')
 const productRouter = require('./productRouter')
 const authRoutes = require('./auth')
+const productRoutes = require('./productRouter');
 
 router.use('/user',userRouter)
 router.use('/auth', authRoutes)
+router.use('/products', productRoutes);
+
 //router.use('/product')
 
 
