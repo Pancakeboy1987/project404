@@ -7,6 +7,7 @@ import ListingCard from "../components/ListingCard";
 import Footer from "../components/Footer";
 import {goods} from "../components/Goods";
 import { Link } from "react-router-dom";
+import { useState,useEffect } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "../components/providers/ThemeContext";
 
@@ -15,6 +16,21 @@ import { ThemeContext } from "../components/providers/ThemeContext";
 export default function Home() {
 
   const {theme, setTheme} = useContext(ThemeContext)
+  const [products, setProducts] = useState([]);
+
+  // При загрузке страницы скачиваем товары
+  useEffect(() => {
+    // Запрос на твой сервер
+    fetch('http://localhost:7000/api/products') 
+      .then((res) => res.json())
+      .then((data) => {
+        // Если пришел массив, сохраняем его
+        if (Array.isArray(data)) {
+            setProducts(data);
+        }
+      })
+      .catch((err) => console.error("Ошибка загрузки товаров:", err));
+  }, []);
 
   return (
     <div className={`site-${theme}`}>
@@ -25,7 +41,11 @@ export default function Home() {
           <SearchBar />
           <div className="search-actions">
             <button className={`btn-${theme}`}>Поиск</button>
-            <button className={`btn-${theme}`}>Разместить объявление</button>
+            <Link className="mark-url" to={`/pages/CreateAd`}>
+              <button className={`btn-${theme}`}>
+                Разместить объявление
+            </button>
+          </Link>
           </div>
         </div>
 
@@ -36,7 +56,7 @@ export default function Home() {
         <section>
           <h2>Свежие объявления</h2>
           <div className="grid">
-            {goods.map((item) => (
+            {products.map((item) => (
               <ListingCard key={item.id} item={item} />
             ))}
           </div>

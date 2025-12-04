@@ -47,11 +47,56 @@ export default function CreateAdPage(){
   };
 
   // Обработчик отправки формы
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Отправка данных на сервер:', formData);
-    // Здесь будет код для отправки данных в твою БД (например, через axios или fetch)
-    alert('Объявление "отправлено" (смотри консоль)');
+  
+    try {
+      // 1. Создаем объект FormData (он нужен для отправки файлов)
+      const dataToSend = new FormData();
+      
+      // 2. Добавляем текстовые поля из стейта
+      dataToSend.append('title', formData.title);
+      dataToSend.append('price', formData.price);
+      dataToSend.append('description', formData.description);
+      dataToSend.append('category', formData.category); // Если на бэке нужно это поле
+      // Если в модели есть поле location, добавь его, иначе будет ошибка валидации (если оно обязательное)
+      // dataToSend.append('location', 'Москва'); 
+  
+      // 3. Добавляем файл (важно: имя 'image' должно совпадать с upload.single('image') на сервере)
+      if (formData.image) {
+        dataToSend.append('image', formData.image);
+      }
+  
+      // 4. Отправляем запрос
+      const response = await fetch('http://localhost:7000/api/products/create', {
+        method: 'POST',
+        // ВАЖНО: НЕ добавляй headers: { 'Content-Type': 'multipart/form-data' }
+        // Браузер сам добавит этот заголовок с правильным boundary
+        body: dataToSend, 
+      });
+  
+      const result = await response.json();
+  
+      if (!response.ok) {
+        // Если сервер вернул 400 или 500, выводим сообщение от сервера
+        console.error('Ошибка сервера:', result);
+        alert(`Ошибка: ${result.message || 'Не удалось создать объявление'}`);
+        return;
+      }
+  
+      console.log('Успех:', result);
+      alert('Объявление успешно создано!');
+      
+      // Очистка формы (по желанию)
+      /* 
+      setFormData({ title: '', description: '', price: '', category: 'electronics', image: null });
+      setPreview(null);
+      */
+  
+    } catch (error) {
+      console.error('Ошибка сети:', error);
+      alert('Произошла ошибка при отправке запроса');
+    }
   };
 
   // Вспомогательные классы в зависимости от темы
