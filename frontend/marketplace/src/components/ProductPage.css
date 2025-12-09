@@ -1,187 +1,235 @@
+/* --- ОСНОВНОЙ КОНТЕЙНЕР --- */
 .product-container {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    font-family: sans-serif;
-    flex-direction: row;
-    
-  }
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1600px; 
+  margin: 0 auto;
+  align-items: flex-start; 
+}
 
-  .left-block-light{
-    display:flex;
-    flex-direction: column;
-    width:1300px;
-    border: 1px solid #30c2ea53;
-    border-radius: 25px;
-    margin:20px;
-    background: linear-gradient(white, rgba(255, 255, 255, 0.64));
-    box-shadow: 1px 1px rgba(224, 224, 224, 0.568);
-  }
+/* --- ЛЕВЫЙ БЛОК (Товар) --- */
 
-  .left-block-dark{
-    display:flex;
-    flex-direction: column;
-    width:1300px;
-    border: 1px solid #30c2ea53;
-    border-radius: 25px;
-    margin:20px;
-    background: rgb(31,33,40);
-    box-shadow: 1px 1px rgba(224, 224, 224, 0.568);
-  }
-
-
-.right-block-light{
-  display:flex;
-  padding: 15px;
-  border: 1px solid #ddd;
-  box-shadow: 1px 1px #70d9f675;
-  border-radius: 15px;
-  width:500px;
-  background-color: #fafafa;
+[class^="left-block-"] {
+  flex: 2; /* Занимает 2 части ширины (66%) */
+  border-radius: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-
+  gap: 20px;
 }
 
-.right-block-dark{
-  display:flex;
-  padding: 15px;
-  border: 1px solid #696868;
-  box-shadow: 1px 1px #70d9f675;
-  border-radius: 15px;
-  width:500px;
-  background-color:rgb(31,33,40);
+/* Светлая тема */
+.left-block-light {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+/* Темная тема */
+.left-block-dark {
+  background: rgb(31, 33, 40);
+  border: 1px solid #444;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: #e0e0e0; /* Светлый текст */
+}
+
+/* --- ПРАВЫЙ БЛОК (Обертка сайдбара) --- */
+[class^="right-block-"] {
+  flex: 1; /* Занимает 1 часть ширины (33%) */
   display: flex;
   flex-direction: column;
-
+  gap: 20px;
+  min-width: 350px; /* Минимальная ширина сайдбара */
 }
 
-.product-image{
-  padding: 10px;
+/* --- КАРТОЧКА ПРОДАВЦА --- */
+/* Убираем фиксированную высоту и огромные отступы */
+[class^="seller-card-"] {
+  padding: 25px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Аккуратный отступ между элементами */
+  /* height: 400px;  <-- УДАЛИЛИ ЭТО, высота теперь автоматическая */
 }
-  .product-image img {
-    width: 600px;
-    height: auto;
-    border-radius: 8px;
 
-    
+.seller-card-light {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 15px rgba(112, 217, 246, 0.2);
+  color: #333;
+}
 
-    border: 1px solid #ddd;
-  }
-  
-  .product-info {
-    display: flex;
-    flex-direction: column;
+.seller-card-dark {
+  background-color: rgb(31, 33, 40);
+  border: 1px solid #444; /* Более мягкая граница для темной темы */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  color: #e0e0e0;
+}
 
-  }
-  
-  .product-price {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 10px 0;
-    color: #30c2ea
-  }
-  
-  .product-description {
-    border-top: 1px rgba(128, 128, 128, 0.318) solid;
-    margin-bottom: 20px;
-    padding-top: 15px;
-    line-height: 1.5;
-  }
-  
-  .seller-card-light {
+/* --- ИЗОБРАЖЕНИЕ --- */
+.product-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
+.product-image img {
+  max-width: 100%; /* Картинка не вылезает за границы */
+  max-height: 500px; /* Ограничиваем высоту, чтобы не была гигантской */
+  width: auto;
+  border-radius: 12px;
+  object-fit: contain; /* Сохраняет пропорции */
+}
+
+/* --- ИНФОРМАЦИЯ О ТОВАРЕ --- */
+.product-info h1 {
+  font-size: 32px;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+.product-price {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 10px 0 20px 0;
+  color: rgb(0, 179, 255); /* Твой фирменный голубой */
+}
+
+.description-block h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.product-description {
+  line-height: 1.6;
+  font-size: 16px;
+  white-space: pre-wrap; /* Сохраняет абзацы */
+}
+
+/* Линии разделители (адаптируются под тему) */
+.left-block-light .product-description {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.left-block-dark .product-description {
+  border-top: 1px solid #444;
+  padding-top: 20px;
+}
+
+/* --- ЭЛЕМЕНТЫ ПРОДАВЦА --- */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-info h4 {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.7;
+  font-weight: normal;
+}
+
+.contact-info h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* Кнопки */
+.btn-space {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.contact-btn-light{
+  width: 100%; /* Кнопки на всю ширину карточки */
+  background: linear-gradient(90deg, rgb(0, 179, 255), rgb(18, 124, 211));
+  color: azure;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 179, 255, 0.3);
+}
+
+.contact-btn-dark{
+  width: 100%; /* Кнопки на всю ширину карточки */
+  background: linear-gradient(90deg, rgb(0, 179, 255), rgb(10, 93, 161));
+  color: azure;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 179, 255, 0.3);
+}
+
+.write-btn {
+  width: 100%; /* Кнопки на всю ширину карточки */
+  background: linear-gradient(90deg, rgb(0, 179, 255), rgb(4, 95, 169));
+  color: azure;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 179, 255, 0.3);
+}
+
+/* Разные стили для второй кнопки, чтобы не сливались */
+.write-btn {
+  background: transparent;
+  border: 2px solid rgb(0, 179, 255);
+  color: rgb(0, 179, 255);
+  box-shadow: none;
+}
+.left-block-dark .write-btn {
+    color: white; /* Белый текст кнопки в темной теме */
+    border-color: white;
+}
+
+.contact-btn-light:hover, .contact-btn-dark:hover, .write-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 15px rgba(0, 179, 255, 0.4);
+}
+
+.review-space {
+  margin-top: 20px;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  padding-top: 15px;
+}
+
+/* --- АДАПТИВНОСТЬ (Мобильные устройства) --- */
+@media (max-width: 900px) {
+  .product-container {
+    flex-direction: column; /* Блоки становятся друг под друга */
     padding: 15px;
-    border: 1px solid #ddd;
-    box-shadow: 1px 1px #70d9f675;
-    border-radius: 15px;
-    width:400px;
-    background-color: #fafafa;
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    gap:130px
-  }
-
-  .seller-card-dark {
-
-    padding: 15px;
-    border: 1px solid #696868;
-    box-shadow: 1px 1px #70d9f675;
-    border-radius: 15px;
-    width:400px;
-    background-color: rgb(31,33,40);
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    gap:130px
   }
   
-  
-  .contact-btn {
-    background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
-    color: azure;
-    border: 0px solid #e6e6e6;
-    padding: 18px 12px;
-    border-radius: 15px;
-    box-shadow: 1px 1px #70d9f6;
-    font-weight: 700;
-    font-size: 20px;
+  [class^="left-block-"], 
+  [class^="right-block-"] {
+    width: 100%; /* На мобилках полная ширина */
+    flex: none;
+    margin: 0;
+    box-sizing: border-box; /* Важно чтобы padding не расширял блок */
   }
-
-  .write-btn{
-    background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
-    color: azure;
-    border: 0px solid #e6e6e6;
-    padding: 18px 12px;
-    border-radius: 15px;
-    box-shadow: 1px 1px #70d9f6;
-    font-weight: 700;
-    font-size: 20px;
-  }
-
-  .write-btn:hover {
-    transform: scale(1.02);
-    filter: drop-shadow(0 0 2em #2ec5ef6b);
-  }
-
-  
-  
-  .contact-btn:hover {
-    transform: scale(1.02);
-    filter: drop-shadow(0 0 2em #2ec5ef6b);
-  }
-  
-
-  .btn-space{
-    display: flex;
-    flex-direction: column;
-    gap:10px;
-  }
-
-  .contact-info{
-    margin-top:20px ;
-    display:flex;
-    flex-direction: column;
-    gap:4px;
-    font-size: 18px;
-  }
-
-  .contact-info>h3{
-    margin:0;
-    text-shadow:1px 1px#30c2ea70;
-  
-  }
-
-  .contact-info>h4{
-    margin:0;
-  }
-
-  .review-space{
-    display:flex;
-    flex-direction: column;
-    gap:5px;
-
-    
-    
-  }
+}
