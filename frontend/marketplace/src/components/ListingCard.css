@@ -22,13 +22,15 @@
 
   .card-light:hover{
     filter: drop-shadow(0 0 2em #2ec5ef6b);
-    transform: scale(1.02);
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
   }
 
 
   .card-dark:hover{
     filter: drop-shadow(0 0 2em #2ec5ef6b);
-    transform: scale(1.02);
+    transform: translateY(-2px);
+    transition: all 0.2s ease;
   }
 
   .card-light img {

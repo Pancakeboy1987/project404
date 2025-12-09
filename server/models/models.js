@@ -18,9 +18,34 @@ const Product = sequelize.define("Product", {
   location: { type: DataTypes.STRING },
   description: { type: DataTypes.STRING },
   image: { type: DataTypes.STRING },
+  userId: { type: DataTypes.INTEGER }
 });
 
 
-module.exports = {User};
-module.exports = {Product};
-//ниже опишу связи но для начала у нас только два объекта
+const Favorite = sequelize.define('Favorite', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+});
+
+
+User.hasMany(Product);
+Product.belongsTo(User);
+
+
+User.hasMany(Favorite);
+Favorite.belongsTo(User);
+
+Product.hasMany(Favorite);
+Favorite.belongsTo(Product);
+
+User.hasMany(Product);
+
+// Каждый товар принадлежит одному пользователю
+Product.belongsTo(User)
+
+
+module.exports = {
+  User,     
+  Product,
+  Favorite
+
+};

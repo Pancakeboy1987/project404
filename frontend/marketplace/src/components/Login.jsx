@@ -3,72 +3,70 @@ import { useState, useContext } from "react";
 import "./Login.css";
 import Registration from "./Registration";
 import { AuthContext } from "./providers/AuthContext";
+import { ThemeContext } from "./providers/ThemeContext";
 
-export default function ({ onClose }) {
+export default function Login({ onClose }) { 
   const [authIsOpen, setAuthIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null); // Для отображения ошибок
-  const [success, setSuccess] = useState(false); // Для успеха
+  const [error, setError] = useState(null);
   const { login } = useContext(AuthContext);
+  const { theme } = useContext(ThemeContext); // Получаем тему
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Предотвращаем перезагрузку страницы
+    event.preventDefault();
+    setError(null); // Сбрасываем старые ошибки
 
     try {
-      // Собираем данные из формы
       const userData = { email, password };
-      console.log(userData);
 
-      // Fetch-запрос на регистрацию (как в примере, но с реальными данными из формы)
       const response = await fetch("http://localhost:7000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData), // Преобразуем объект в JSON
+        body: JSON.stringify(userData),
       });
 
-      // Проверяем, успешный ли ответ (если статус не 200-299, бросаем ошибку)
-      if (!response.ok) {
-        throw new Error("problem");
-      }
-
-      // Парсим JSON из ответа
       const data = await response.json();
 
-      // Сохраняем токен в localStorage (для будущих запросов, например, на авторизованные страницы)
-      localStorage.setItem("token", data.token);
-
-      // Выводим токен в консоль для теста (как в твоем примере)
-      console.log("Token:", data.token);
-
-      console.log(data.user.name);
-
-      //передаем данные в логин - функцию провайдера аутентификации для дальнейшего использования в компонентах
-
-      login({ token: data.token, name: data.user.name, email: data.user.email, id:data.user.id });
-
-      // Устанавливаем успех (можно перенаправить на главную страницу)
-      setSuccess(true);
-      if (success === true) {
-        console.log("authorised!!");
-        onClose?.();
+      if (!response.ok) {
+        // Если сервер вернул ошибку, показываем её сообщение
+        throw new Error(data.message || "Ошибка при входе");
       }
-      setError(null);
 
-      // Здесь можно добавить redirect: window.location.href = '/'; (если без React Router)
+      localStorage.setItem("token", data.token);
+      
+      // Обновляем глобальную авторизацию
+      login({ 
+        token: data.token, 
+        name: data.user.name, 
+        email: data.user.email, 
+        id: data.user.id 
+      });
+
+
+      alert("Вы успешно вошли!");
+      onClose?.(); 
+      
     } catch (err) {
-      // Обработка ошибок (например, если email уже занят или сервер упал)
-      setError(err);
       console.error("Error:", err);
+
+      setError(err.message);
     }
   };
 
+  
+  const inputClass = theme === 'dark' ? 'login-input-dark' : 'login-input-light';
+
   return (
     <Modal onClose={onClose}>
-      <h2>Вход</h2>
+      <h2 style={{marginTop: 0, marginBottom: '20px'}}>Вход</h2>
+      
+    
+      {error && <div className="error-message">{error}</div>}
+
       <form className="login-form" onSubmit={handleSubmit}>
         <input
-          className="login-input"
+          className={`login-input ${inputClass}`}
           type="text"
           placeholder="Email"
           value={email}
@@ -76,25 +74,25 @@ export default function ({ onClose }) {
           required
         />
         <input
-          className="login-input"
+          className={`login-input ${inputClass}`}
           type="password"
           placeholder="Пароль"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        
         <button className="login-button" type="submit">
           Войти
         </button>
       </form>
+
       <div className="to-sign-in">
-        <h3>Зарегистрироваться?</h3>
+        <h4 style={{margin: 0}}>Нет аккаунта?</h4>
         <button
           className="to-sign-in-button"
-          onClick={() => {
-            setAuthIsOpen(true);
-          }}
-          type="text"
+          onClick={() => setAuthIsOpen(true)}
+          type="button" 
         >
           Зарегистрироваться
         </button>

@@ -1,38 +1,79 @@
-.login-form{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-   
-  .login-input{
-    border-radius: 25px;
-    border: 1px solid rgba(121, 180, 247, 0.684);
-    padding:5px;
-  
-  }
-  
-  .login-button{
-    border:0;
-    border-radius: 25px;
-    padding:10px;
-    margin-top:5px;
-    background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
-    color: #ffffff;
-  }
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-  .to-sign-in{
-    margin-top: 10px;
-    border-top: 1px solid rgba(128, 128, 128, 0.43);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .to-sign-in-button{
-    border:0;
-    border-radius: 25px;
-    padding:15px 55px 15px 55px;
-    margin-top:5px;
-    background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230));
-    color:aliceblue
-  }
+.login-input {
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+
+.login-input-light {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+
+.login-input-dark {
+  background-color: #2b2d36; /* Чуть светлее фона окна */
+  border: 1px solid #4a4a4a;
+  color: white;
+}
+.login-input-dark:focus {
+  border-color: rgb(0, 179, 255);
+}
+
+.login-button {
+  margin-top: 10px;
+  padding: 12px;
+  background: linear-gradient(90deg, rgb(0, 179, 255), rgb(4, 95, 169));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.login-button:hover {
+  transform: scale(1.02);
+}
+
+.error-message {
+  color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.to-sign-in {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(128, 128, 128, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.to-sign-in-button {
+  background: transparent;
+  border: none;
+  color: rgb(0, 179, 255);
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+}
+.to-sign-in-button:hover {
+  text-decoration: underline;
+}
