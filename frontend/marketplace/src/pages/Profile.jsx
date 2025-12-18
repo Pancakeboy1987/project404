@@ -5,7 +5,7 @@ import ProfileLists from "../components/profileComponents/ProfileLists";
 import ProfileButtons from "../components/profileComponents/ProfileButtons";
 import { ThemeContext } from "../components/providers/ThemeContext";
 import { AuthContext } from "../components/providers/AuthContext";
-import voron from "../assets/voron.jpg"; // Твоя картинка-заглушка
+import voron from "../assets/voron.jpg"; 
 import "../components/profileComponents/profile.css";
 
 // Иконки (если не установлены: npm install react-icons)
@@ -48,6 +48,21 @@ export default function Profile() {
       return () => URL.revokeObjectURL(previewUrl);
     }
   }, [editedPhoto]);
+
+  ///загрузка товара 
+  useEffect(() => {
+    // Запрос на твой сервер
+    fetch('http://localhost:7000/api/products') 
+      .then((res) => res.json())
+      .then((data) => {
+        // Если пришел массив, сохраняем его
+        if (Array.isArray(data)) {
+            setProducts(data);
+        }
+      })
+      .catch((err) => console.error("Ошибка загрузки товаров:", err));
+  }, []);
+
 
   // Сохранение
   const handleSubmit = async (event) => {

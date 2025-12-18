@@ -6,8 +6,10 @@ const productController = require('../controllers/productController');
 
 
 // POST запрос на создание
-// 'image' — это имя поля (name="image") в FormData на фронтенде
+// image это имя пол в FormData на фронтенде
 router.post('/create', upload.single('image'), productController.createProduct);
 router.get('/', productController.getAllProducts); 
+
+
 
 module.exports = router;

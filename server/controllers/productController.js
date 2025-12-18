@@ -1,19 +1,16 @@
-const { Product } = require('../models/models'); 
+const { Product, Favorite } = require('../models/models'); // Не забудьте импортировать Favorite, если он используется ниже
 
 const createProduct = async (req, res) => {
   try {
     // Проверяем, загрузился ли файл
-
     if (!req.file) {
       return res.status(400).json({ message: 'Необходимо загрузить изображение' });
     }
-    
 
-    // Получаем данные из тела запроса
-    // В React форме оправляется: title, description, price, loc.
-    const { title, price, description, location } = req.body;
+    //  Получаем данные из тела запроса
+    // Добавляем сюда userId и category, которые приходят с фронтенда
+    const { title, price, description, location, category, userId,userName } = req.body;
 
-  
     const imagePath = req.file ? req.file.filename : null; 
 
 
@@ -22,6 +19,9 @@ const createProduct = async (req, res) => {
       price: Number(price), 
       description,
       location: location || 'Не указано', 
+      category: category || 'electronics', 
+      userId, 
+      userName,
       image: imagePath,
     });
 
@@ -43,7 +43,6 @@ const createProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-    // Получаем все товары из базы
     const products = await Product.findAll(); 
     return res.json(products);
   } catch (error) {
@@ -54,7 +53,7 @@ const getAllProducts = async (req, res) => {
 
 const getMyProducts = async (req, res) => {
   try {
-      const userId = req.user.id; // Из authMiddleware
+      const userId = req.user.id; 
       const products = await Product.findAll({ where: { userId } });
       return res.json(products);
   } catch (e) {
@@ -63,16 +62,13 @@ const getMyProducts = async (req, res) => {
   }
 };
 
-// Получиение избраннх товаров пользователя
 const getMyFavorites = async (req, res) => {
   try {
       const userId = req.user.id;
-      // Ищем записи в таблице Favorite и подтягиваем связанные Products
       const favorites = await Favorite.findAll({
           where: { userId },
           include: [{ model: Product }] 
       });
-      
       
       const products = favorites.map(fav => fav.Product);
       return res.json(products);
@@ -81,7 +77,6 @@ const getMyFavorites = async (req, res) => {
       res.status(500).json({ message: "Ошибка" });
   }
 };
-
 
 const toggleFavorite = async (req, res) => {
   try {
@@ -103,9 +98,10 @@ const toggleFavorite = async (req, res) => {
   }
 };
 
-
-
-
 module.exports = {
-  createProduct, getAllProducts,getMyFavorites, getMyProducts,toggleFavorite
+  createProduct, 
+  getAllProducts, 
+  getMyFavorites, 
+  getMyProducts, 
+  toggleFavorite
 };

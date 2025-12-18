@@ -20,7 +20,7 @@ export default function Home() {
 
   // При загрузке страницы скачиваем товары
   useEffect(() => {
-    // Запрос на твой сервер
+   
     fetch('http://localhost:7000/api/products') 
       .then((res) => res.json())
       .then((data) => {
