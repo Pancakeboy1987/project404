@@ -32,7 +32,7 @@ const upload = multer({
   storage: storage,
   limits: { fileSize: 10 * 1024 * 1024 }, // 10MB лимит
   fileFilter: fileFilter
-}).single('image'); // Ожидаем поле 'image' из FormData
+}).single('image'); 
 
 const updateUser = async (req, res) => {
   upload(req, res, async (err) => {

@@ -28,15 +28,14 @@ const Favorite = sequelize.define('Favorite', {
 
 
 
-// Связь User <-> Product
 User.hasMany(Product, { onDelete: 'CASCADE' });
 Product.belongsTo(User);
 
-// Связь User <-> Favorite
+
 User.hasMany(Favorite);
 Favorite.belongsTo(User);
 
-// Связь Product <-> Favorite
+
 Product.hasMany(Favorite);
 Favorite.belongsTo(Product);
 

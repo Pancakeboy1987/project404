@@ -13,9 +13,6 @@
 .username-light { padding: 10px; color: aliceblue; background: linear-gradient(rgb(0, 179, 255), rgb(146, 192, 230)); border-radius: 6px; text-decoration: none; }
 .username-dark { padding: 10px; color: aliceblue; background: linear-gradient(rgb(0, 179, 255), rgb(4, 95, 169)); border-radius: 6px; text-decoration: none; }
 
-/* --- НОВЫЕ СТИЛИ ДЛЯ СТРАНИЦЫ СОЗДАНИЯ ОБЪЯВЛЕНИЯ --- */
-
-/* Общий контейнер страницы */
 .page-container {
   min-height: 100vh;
   padding: 0 20px;
@@ -25,7 +22,7 @@
 .page-light { background-color: #f4f4f4; color: #333; }
 .page-dark { background-color: #1a1a1a; color: #f0f0f0; }
 
-/* Контейнер формы */
+
 .create-ad-wrapper {
   max-width: 800px;
   margin: 40px auto;
@@ -47,7 +44,7 @@
   font-size: 14px;
 }
 
-/* Стилизация инпутов */
+
 .form-input {
   width: 100%;
   padding: 12px;

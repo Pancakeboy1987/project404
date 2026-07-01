@@ -57,7 +57,7 @@ export default function Header() {
         </div>
         <div>
           <div className="main-title">RUDN Market</div>
-          <div className="alter-title">лалаллалала</div>
+          <div className="alter-title">Сервис для продажи и обмена</div>
         </div>
       </div>
 

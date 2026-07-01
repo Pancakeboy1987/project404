@@ -1,15 +1,15 @@
 const multer = require('multer');
 const path = require('path');
 
-// Настройка хранилища
+
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    // Папка, куда будут сохраняться картинки
-    // Убедись, что папка 'uploads' существует в корне проекта
+
+ 
     cb(null, 'uploads/');
   },
   filename(req, file, cb) {
-    // Генерируем уникальное имя файла: дата + оригинальное расширение
+
     cb(null, `${Date.now()}-${file.originalname}`);
   }
 });

@@ -9,7 +9,7 @@ import ThemeContext from "./components/providers/ThemeContext";
 import Home from "./pages/Home";
 import ProductPage from "./pages/ProductPage";
 import Profile from "./pages/Profile";
-import CreateAdPage from "./pages/CreateAdPAge";
+import CreateAdPage from "./pages/CreateAdPage";
 
 import "./App.css";
 

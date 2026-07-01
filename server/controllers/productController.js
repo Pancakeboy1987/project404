@@ -7,8 +7,7 @@ const createProduct = async (req, res) => {
       return res.status(400).json({ message: 'Необходимо загрузить изображение' });
     }
 
-    //  Получаем данные из тела запроса
-    // Добавляем сюда userId и category, которые приходят с фронтенда
+
     const { title, price, description, location, category, userId,userName } = req.body;
 
     const imagePath = req.file ? req.file.filename : null; 

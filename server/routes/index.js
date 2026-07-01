@@ -10,7 +10,6 @@ router.use('/user',userRouter)
 router.use('/auth', authRoutes)
 router.use('/products', productRoutes);
 
-//router.use('/product')
 
 
 module.exports = router
